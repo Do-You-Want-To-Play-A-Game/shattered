@@ -40,7 +40,7 @@ Because this app will give users the ability to invision and create their own pu
 
 **What will your MVP functionality be?**
 
-- 
+- Local image storage and retrieval. Some kind of display (probably a JavaFX file picker and display window) to show the modification of the image to the user and handle events.
 
  **What are your stretch goals?**
 
