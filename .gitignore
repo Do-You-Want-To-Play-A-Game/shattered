@@ -43,3 +43,4 @@ bin/
 
 jpa-buddy.xml
 .idea
+.idea/*
