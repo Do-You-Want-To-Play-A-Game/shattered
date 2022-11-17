@@ -54,10 +54,6 @@ Because this app will give users the ability to invision and create their own pu
 - User can upload images
 - User can create and save images to profile.
 
-**Data Flow**
-
-- 
-
 **Non-Functional Requirements**
 
 - Security
@@ -70,6 +66,7 @@ Because this app will give users the ability to invision and create their own pu
 
 ## WireFrame
 
-## DB Schema
+![2022-11-17 (3)](https://user-images.githubusercontent.com/108303424/202584681-97593644-4535-49b3-a4b4-9b5f9bd44bea.png)
+
 
 
