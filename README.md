@@ -66,7 +66,10 @@ Because this app will give users the ability to invision and create their own pu
 
 ## Domain Model
 
+![midterm_data_flow](https://user-images.githubusercontent.com/108303424/202577507-61a5d78c-0861-4a71-89a1-2b4e80c8a9ee.png)
+
 ## WireFrame
 
 ## DB Schema
+
 
