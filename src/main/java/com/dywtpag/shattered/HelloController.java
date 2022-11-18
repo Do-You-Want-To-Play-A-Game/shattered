@@ -7,8 +7,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -16,10 +17,12 @@ import java.io.IOException;
 
 public class HelloController
 {
+	@FXML
+	public Button Uploader;
 	Scene scene;
 	Stage stage;
 	@FXML
-	private VBox vBox;
+	private Pane anchor;
 	@FXML
 	public Rectangle rectangle;
 	@FXML
@@ -50,10 +53,22 @@ public class HelloController
 		 sequence.play();
 	}
 
+	@FXML
+	public void movementAnimation(){
+		KeyValue start = new KeyValue(Uploader.translateYProperty(), 100);
+		KeyValue end = new KeyValue(Uploader.translateYProperty(), -100);
+
+		KeyFrame kf1 = new KeyFrame(Duration.seconds(3), start, end);
+
+		Timeline timeline1 = new Timeline(kf1);
+		 SequentialTransition sequence = new SequentialTransition(timeline1);
+		 sequence.play();
+	}
+
 	private  void fadeOut(){
 		FadeTransition fadeTransition =new FadeTransition();
 		fadeTransition.setDuration(Duration.millis(2000));
-		fadeTransition.setNode(vBox);
+		fadeTransition.setNode(anchor);
 		fadeTransition.setFromValue(1);
 		fadeTransition.setToValue(0);
 		fadeTransition.play();
@@ -68,6 +83,5 @@ public class HelloController
 		stage.setScene(scene);
 		stage.show();
 	}
-
 
 }

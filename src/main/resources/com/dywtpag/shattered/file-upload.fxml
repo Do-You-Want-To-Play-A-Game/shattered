@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
@@ -23,7 +23,7 @@
                   <Insets bottom="30.0" />
                </VBox.margin>
             </Label>
-            <Button contentDisplay="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" text="Choose File">
+            <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#uploadAnImage" prefHeight="40.0" prefWidth="200.0" text="Choose File">
                <font>
                   <Font name="Arial Rounded MT Bold" size="18.0" />
                </font>
@@ -31,13 +31,10 @@
                   <Insets />
                </VBox.margin>
             </Button>
-            <ImageView fitHeight="600.0" fitWidth="700.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="choosenImg" fitHeight="600.0" fitWidth="700.0" pickOnBounds="true" preserveRatio="true">
                <VBox.margin>
                   <Insets top="30.0" />
                </VBox.margin>
-               <image>
-                  <Image url="@../../../../../../../../../../../Users/sagej/OneDrive/Desktop/moose.png" />
-               </image>
             </ImageView>
             <Label text="Difficulty">
                <font>
@@ -48,6 +45,9 @@
                </VBox.margin>
             </Label>
             <ChoiceBox prefWidth="300.0">
+               <String fx:value="Easy" />
+               <String fx:value="Medium"/>
+               <String fx:value="Hard"/>
                <VBox.margin>
                   <Insets bottom="20.0" top="5.0" />
                </VBox.margin>
