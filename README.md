@@ -40,7 +40,7 @@ Because this app will give users the ability to invision and create their own pu
 
 **What will your MVP functionality be?**
 
-- 
+- Local image storage and retrieval. Some kind of display (probably a JavaFX file picker and display window) to show the modification of the image to the user and handle events.
 
  **What are your stretch goals?**
 
@@ -54,10 +54,6 @@ Because this app will give users the ability to invision and create their own pu
 - User can upload images
 - User can create and save images to profile.
 
-**Data Flow**
-
-- 
-
 **Non-Functional Requirements**
 
 - Security
@@ -66,7 +62,11 @@ Because this app will give users the ability to invision and create their own pu
 
 ## Domain Model
 
+![midterm_data_flow](https://user-images.githubusercontent.com/108303424/202577507-61a5d78c-0861-4a71-89a1-2b4e80c8a9ee.png)
+
 ## WireFrame
 
-## DB Schema
+![2022-11-17 (3)](https://user-images.githubusercontent.com/108303424/202584681-97593644-4535-49b3-a4b4-9b5f9bd44bea.png)
+
+
 
