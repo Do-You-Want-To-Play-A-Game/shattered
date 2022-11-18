@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="CENTER" prefHeight="1000.0" prefWidth="1000.0" spacing="50.0" style="-fx-background-color: #3D348B;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dywtpag.shattered.HelloController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+
+   <Rectangle fx:id="rectangle" arcHeight="3.0" arcWidth="3.0" fill="#d9c259" height="100.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="100.0" />
+
+    <Label fx:id="welcomeText" alignment="CENTER" prefHeight="100.0" prefWidth="600.0" text="Shattered" textAlignment="CENTER" textFill="WHITE">
+      <font>
+         <Font name="Arial Rounded MT Bold" size="36.0" />
+      </font>
+    </Label>
+
+    <Button onAction="#toUploader" prefHeight="100.0" prefWidth="500.0" style="-fx-background-color: #B3C2F2; -fx-background-radius: 20;" text="File Upload" textAlignment="CENTER" textFill="WHITE">
+      <font>
+         <Font name="Arial Rounded MT Bold" size="24.0" />
+      </font>
+    </Button>
+
+   <Button mnemonicParsing="false" onAction="#Falling" prefHeight="100.0" prefWidth="500.0" style="-fx-background-color: #B3C2F2; -fx-background-radius: 20;" text="Gallery" textFill="WHITE">
+      <font>
+         <Font name="Arial Rounded MT Bold" size="24.0" />
+      </font>
+   </Button>
+
+</VBox>
