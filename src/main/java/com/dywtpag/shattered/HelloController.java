@@ -8,6 +8,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -17,6 +18,8 @@ public class HelloController
 {
 	Scene scene;
 	Stage stage;
+	@FXML
+	private VBox vBox;
 	@FXML
 	public Rectangle rectangle;
 	@FXML
@@ -47,13 +50,24 @@ public class HelloController
 		 sequence.play();
 	}
 
+	private  void fadeOut(){
+		FadeTransition fadeTransition =new FadeTransition();
+		fadeTransition.setDuration(Duration.millis(2000));
+		fadeTransition.setNode(vBox);
+		fadeTransition.setFromValue(1);
+		fadeTransition.setToValue(0);
+		fadeTransition.play();
+	}
+
 	@FXML
 	protected void toUploader(ActionEvent event) throws IOException {
+		fadeOut();
 		Parent uploader = FXMLLoader.load(getClass().getResource("file-upload.fxml"));
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(uploader);
 		stage.setScene(scene);
 		stage.show();
 	}
+
 
 }
