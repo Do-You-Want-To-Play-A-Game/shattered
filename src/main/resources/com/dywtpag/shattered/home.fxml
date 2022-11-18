@@ -1,35 +1,91 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<VBox alignment="CENTER" prefHeight="1000.0" prefWidth="1000.0" spacing="50.0" style="-fx-background-color: #3D348B;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dywtpag.shattered.HelloController">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-    </padding>
+<AnchorPane xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dywtpag.shattered.HelloController">
+   <children>
+      <ImageView fitHeight="1000.0" fitWidth="1000.0" focusTraversable="true" pickOnBounds="true" style="-fx-opacity: 0.7;">
+         <image>
+            <Image url="@homeMountain.jpeg" />
+         </image>
+         <viewport>
+            <Rectangle2D />
+         </viewport>
+      </ImageView>
+      <VBox alignment="CENTER" prefHeight="1000.0" prefWidth="1000.0" spacing="50.0">
+      
+                     <Rectangle fx:id="rectangle" arcHeight="3.0" arcWidth="3.0" fill="#6b6442" height="100.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="100.0" />
+      
+                      <Label fx:id="welcomeText" alignment="CENTER" prefHeight="100.0" prefWidth="600.0" text="Shattered" textAlignment="CENTER" textFill="WHITE">
+            <font>
+               <Font name="Arial Rounded MT Bold" size="36.0" />
+            </font>
+            <effect>
+               <DropShadow>
+                  <color>
+                     <Color opacity="0.699999988079071" />
+                  </color>
+               </DropShadow>
+            </effect>
+          </Label>
+      
+                      <Button fx:id="Uploader" onAction="#toUploader" prefHeight="100.0" prefWidth="500.0" style="-fx-background-color: #B3C2F2; -fx-background-radius: 20;" text="File Upload" textAlignment="CENTER" textFill="WHITE">
+            <font>
+               <Font name="Arial Rounded MT Bold" size="24.0" />
+            </font>
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
+            <effect>
+               <DropShadow>
+                  <color>
+                     <Color opacity="0.699999988079071" />
+                  </color>
+               </DropShadow>
+            </effect>
+          </Button>
+      
+                     <Button mnemonicParsing="false" onAction="#Falling" prefHeight="100.0" prefWidth="500.0" style="-fx-background-color: #B3C2F2; -fx-background-radius: 20;" text="Gallery" textFill="WHITE">
+            <font>
+               <Font name="Arial Rounded MT Bold" size="24.0" />
+            </font>
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
+            <effect>
+               <DropShadow>
+                  <color>
+                     <Color opacity="0.699999988079071" />
+                  </color>
+               </DropShadow>
+            </effect>
+         </Button>
 
-   <Rectangle fx:id="rectangle" arcHeight="3.0" arcWidth="3.0" fill="#d9c259" height="100.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="100.0" />
 
-    <Label fx:id="welcomeText" alignment="CENTER" prefHeight="100.0" prefWidth="600.0" text="Shattered" textAlignment="CENTER" textFill="WHITE">
-      <font>
-         <Font name="Arial Rounded MT Bold" size="36.0" />
-      </font>
-    </Label>
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </padding>
+      
+                  </VBox>
 
-    <Button onAction="#toUploader" prefHeight="100.0" prefWidth="500.0" style="-fx-background-color: #B3C2F2; -fx-background-radius: 20;" text="File Upload" textAlignment="CENTER" textFill="WHITE">
-      <font>
-         <Font name="Arial Rounded MT Bold" size="24.0" />
-      </font>
-    </Button>
 
-   <Button mnemonicParsing="false" onAction="#Falling" prefHeight="100.0" prefWidth="500.0" style="-fx-background-color: #B3C2F2; -fx-background-radius: 20;" text="Gallery" textFill="WHITE">
-      <font>
-         <Font name="Arial Rounded MT Bold" size="24.0" />
-      </font>
-   </Button>
-
-</VBox>
+      <Text boundsType="VISUAL" fill="WHITE" layoutX="380.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Do you want to play a game?  2022" textAlignment="CENTER" AnchorPane.topAnchor="950.0">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="14.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>
