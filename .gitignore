@@ -40,3 +40,7 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+
+jpa-buddy.xml
+.idea
+.idea/*
