@@ -8,9 +8,9 @@ import java.util.ArrayList;
 
 public class PuzzleCreator
 {
-	public static ArrayList<BufferedImage> createPuzzle(BufferedImage image, int rows, int columns) throws IOException
+	public static ArrayList<PuzzleNode> createPuzzle(BufferedImage image, int rows, int columns) throws IOException
 	{
-		ArrayList<BufferedImage> pieces = new ArrayList<>();
+		ArrayList<PuzzleNode> pieces = new ArrayList<>();
 
 		int height = image.getHeight();
 		int width = image.getWidth();
@@ -22,8 +22,10 @@ public class PuzzleCreator
 		{
 			for (int y = 0; y < height; y += puzzleHeight)
 			{
+				//TODO cut off excess if error
 				BufferedImage subImage = image.getSubimage(x, y, puzzleWidth, puzzleHeight);
-				pieces.add(subImage);
+				PuzzleNode puzzleNode = new PuzzleNode(subImage, x, y);
+				pieces.add(puzzleNode);
 //				ImageIO.write(subImage, "bmp", new File("result" + x + "-" + y + ".jpg"));
 //				System.out.println("x range:" + x + " - " + (x + puzzleWidth));
 //				System.out.println("y range: " + y + " - " + (y + puzzleHeight));

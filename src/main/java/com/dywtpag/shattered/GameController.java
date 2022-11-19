@@ -1,37 +1,25 @@
 package com.dywtpag.shattered;
 
 import com.dywtpag.shattered.puzzle.PuzzleCreator;
-import javafx.embed.swing.SwingFXUtils;
+import com.dywtpag.shattered.puzzle.PuzzleNode;
 import javafx.fxml.FXML;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
-import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.ArrayList;
 
 public class GameController {
 
-    DraggableMouse draggableMouse = new DraggableMouse();
-
     @FXML
     public AnchorPane main;
 
     public void makeGame() throws IOException {
-        ArrayList<BufferedImage> puzzle = PuzzleCreator.createPuzzle(FileUploadController.imgToChop, 5, 5);
+        ArrayList<PuzzleNode> puzzle = PuzzleCreator.createPuzzle(FileUploadController.getImgToChop(), 1920, 1080);
+        //todo let rows and columns be changed
 
-        for (int i = 0; i < puzzle.size(); i++) {
-            BufferedImage bufferedImage = puzzle.get(i);
-
-            Image piece = SwingFXUtils.toFXImage(bufferedImage, null);
-
-            ImageView imgPiece = new ImageView();
-            imgPiece.setImage(piece);
-
-            draggableMouse.makeDraggable(imgPiece);
-
-            main.getChildren().add(imgPiece);
+        for (PuzzleNode puzzleNode : puzzle)
+        {
+            main.getChildren().add(puzzleNode);
         }
     }
 
