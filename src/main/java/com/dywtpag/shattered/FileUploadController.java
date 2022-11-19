@@ -18,8 +18,8 @@ import java.io.IOException;
 
 public class FileUploadController {
 
-    public static BufferedImage imgToChop;
-    public ImageView choosenImg;
+    private static BufferedImage imgToChop;
+    public ImageView chosenImg;
     Stage stage;
     Scene scene;
 
@@ -53,8 +53,8 @@ public class FileUploadController {
         BufferedImage buffedImg = ImageIO.read(file);
         Image img = SwingFXUtils.toFXImage(buffedImg, null);
 
-        //set imgviewr to chossen file
-        choosenImg.setImage(img);
+        //set ImageView to chosen file
+        chosenImg.setImage(img);
 
         imgToChop = buffedImg;
     }
@@ -68,4 +68,14 @@ public class FileUploadController {
             stage.setScene(scene);
             stage.show();
         }
+
+    public static BufferedImage getImgToChop()
+    {
+        return imgToChop;
+    }
+
+    public static void setImgToChop(BufferedImage imgToChop)
+    {
+        FileUploadController.imgToChop = imgToChop;
+    }
 }
