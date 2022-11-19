@@ -17,6 +17,8 @@ import java.io.File;
 import java.io.IOException;
 
 public class FileUploadController {
+
+    public static BufferedImage imgToChop;
     public ImageView choosenImg;
     Stage stage;
     Scene scene;
@@ -31,7 +33,8 @@ public class FileUploadController {
     }
 
     @FXML
-    private void uploadAnImage() throws IOException {
+    //Set back to private void after testing puzzle function
+    public void uploadAnImage() throws IOException {
         FileChooser fileChooser = new FileChooser();
 
         //this is our filter for the file types
@@ -53,7 +56,16 @@ public class FileUploadController {
         //set imgviewr to chossen file
         choosenImg.setImage(img);
 
-
-
+        imgToChop = buffedImg;
     }
+
+    @FXML
+        protected void moveToGame(ActionEvent event) throws IOException {
+
+            Parent game = FXMLLoader.load(getClass().getResource("game.fxml"));
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            scene = new Scene(game);
+            stage.setScene(scene);
+            stage.show();
+        }
 }

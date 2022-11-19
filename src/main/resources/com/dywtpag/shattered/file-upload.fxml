@@ -46,13 +46,13 @@
             </Label>
             <ChoiceBox prefWidth="300.0">
                <String fx:value="Easy" />
-               <String fx:value="Medium"/>
-               <String fx:value="Hard"/>
+               <String fx:value="Medium" />
+               <String fx:value="Hard" />
                <VBox.margin>
                   <Insets bottom="20.0" top="5.0" />
                </VBox.margin>
             </ChoiceBox>
-            <Button mnemonicParsing="false" text="Start Puzzle">
+            <Button mnemonicParsing="false" onAction="#moveToGame" text="Start Puzzle">
                <font>
                   <Font name="Arial Rounded MT Bold" size="18.0" />
                </font>
