@@ -15,8 +15,8 @@ public class DraggableMouse {
         });
 
         node.setOnMouseDragged(mouseEvent ->{
-            node.setLayoutX(mouseEvent.getSceneX() - mouseX);
-            node.setLayoutY(mouseEvent.getSceneY() - mouseY);
+            node.setLayoutX(mouseEvent.getSceneX() -  mouseX);
+            node.setLayoutY(mouseEvent.getSceneY() - mouseY - 100);
         });
     }
 }

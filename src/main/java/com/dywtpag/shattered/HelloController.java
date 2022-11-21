@@ -19,6 +19,7 @@ public class HelloController
 {
 	@FXML
 	public Button Uploader;
+	public Button Gallery;
 	Scene scene;
 	Stage stage;
 	@FXML
@@ -28,6 +29,12 @@ public class HelloController
 	@FXML
 	private Label welcomeText;
 
+
+	@FXML
+	public void initialize(){
+		movementAnimation(Uploader);
+		movementAnimation(Gallery);
+	}
 	@FXML
 	public void Falling() {
 
@@ -54,14 +61,19 @@ public class HelloController
 	}
 
 	@FXML
-	public void movementAnimation(){
-		KeyValue start = new KeyValue(Uploader.translateYProperty(), 100);
-		KeyValue end = new KeyValue(Uploader.translateYProperty(), -100);
+	public void movementAnimation(Node node){
+		KeyValue start = new KeyValue(node.translateYProperty(), 10);
+		KeyValue end = new KeyValue(node.translateYProperty(), -10);
 
-		KeyFrame kf1 = new KeyFrame(Duration.seconds(3), start, end);
+		KeyFrame kf1 = new KeyFrame(Duration.seconds(3), start);
+		KeyFrame kf2 = new KeyFrame(Duration.seconds(3), end);
 
-		Timeline timeline1 = new Timeline(kf1);
-		 SequentialTransition sequence = new SequentialTransition(timeline1);
+		Timeline timeline1 = new Timeline(kf1, kf2);
+		Timeline timeline2 = new Timeline(kf2, kf1);
+
+		 SequentialTransition sequence = new SequentialTransition(timeline1, timeline2);
+		 sequence.setCycleCount(Animation.INDEFINITE);
+		 sequence.setAutoReverse(true);
 		 sequence.play();
 	}
 

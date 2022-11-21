@@ -6,6 +6,9 @@ import javafx.fxml.FXML;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -16,7 +19,7 @@ public class GameController {
     DraggableMouse draggableMouse = new DraggableMouse();
 
     @FXML
-    public AnchorPane main;
+    public Pane main;
 
     public void makeGame() throws IOException {
         ArrayList<BufferedImage> puzzle = PuzzleCreator.createPuzzle(FileUploadController.imgToChop, 5, 5);
