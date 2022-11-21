@@ -15,7 +15,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dywtpag.shattered.HelloController">
+<AnchorPane xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dywtpag.shattered.HomeController">
    <children>
       <ImageView fitHeight="1000.0" fitWidth="1000.0" focusTraversable="true" pickOnBounds="true" style="-fx-opacity: 0.7;">
          <image>
@@ -58,7 +58,7 @@
             </effect>
           </Button>
       
-                     <Button mnemonicParsing="false" onAction="#Falling" prefHeight="100.0" prefWidth="500.0" style="-fx-background-color: #B3C2F2; -fx-background-radius: 20;" text="Gallery" textFill="WHITE">
+                     <Button mnemonicParsing="false" fx:id="gallery" onAction="#toGallery" prefHeight="100.0" prefWidth="500.0" style="-fx-background-color: #B3C2F2; -fx-background-radius: 20;" text="Gallery" textFill="WHITE">
             <font>
                <Font name="Arial Rounded MT Bold" size="24.0" />
             </font>
