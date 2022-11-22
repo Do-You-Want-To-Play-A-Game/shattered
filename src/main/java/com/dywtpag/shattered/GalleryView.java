@@ -1,5 +1,7 @@
 package com.dywtpag.shattered;
 
+import bhlieberman.s3.client.Client;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,7 +13,9 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
+import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class GalleryView {
     @FXML
@@ -21,6 +25,8 @@ public class GalleryView {
     Stage stage;
 
     Scene scene;
+
+    private final ArrayList<BufferedImage> s3Images = new ArrayList<>();
 
 
     // Home Route
@@ -33,7 +39,10 @@ public class GalleryView {
         stage.show();
     }
 
-    @FXML
+    private void loadS3Images(String bucket, String key) {
+        BufferedImage s3Result = Client.getImage(bucket, key);
+        s3Images.add(s3Result);
+    }
 
 
 }
