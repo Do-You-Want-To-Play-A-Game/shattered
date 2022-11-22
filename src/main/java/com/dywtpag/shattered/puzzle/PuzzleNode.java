@@ -1,5 +1,6 @@
 package com.dywtpag.shattered.puzzle;
 
+import com.dywtpag.shattered.GameController;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.Node;
 import javafx.scene.image.ImageView;
@@ -15,10 +16,20 @@ public class PuzzleNode extends ImageView
 	private double mouseX;
 	private double mouseY;
 
-	private int originalX;
-	private int originalY;
+	private final int originalX;
+	private final int originalY;
+
+	private int previousGridX;
+	private int previousGridY;
+
 	private static int width;
 	private static int height;
+
+	private GridPane gridContainer;
+	private AnchorPane mainContainer;
+
+	private GameController controller;
+
 	public PuzzleNode(BufferedImage image, int originalX, int originalY)
 	{
 		this.setImage(SwingFXUtils.toFXImage(image, null));
@@ -27,8 +38,18 @@ public class PuzzleNode extends ImageView
 
 		this.setOnMousePressed(mouseEvent ->
 		{
+//			gridContainer.getChildren().remove(0);
+
 			mouseX = mouseEvent.getX();
 			mouseY = mouseEvent.getY();
+
+			double x = this.getLayoutX();
+			double y = this.getLayoutY();
+
+			previousGridX = (int) Math.round(x / width);
+			previousGridY = (int) Math.round(y / height);
+
+			removeFromGrid();
 		});
 
 		this.setOnMouseDragged(mouseEvent ->
@@ -39,8 +60,66 @@ public class PuzzleNode extends ImageView
 
 		this.setOnMouseReleased(mouseEvent ->
 		{
+			double x = this.getLayoutX();
+			double y = this.getLayoutY();
+
+			int gridX = (int) Math.round(x / width);
+			int gridY = (int) Math.round(y / height);
+
+//			System.out.println("new location: " + gridX + ", " + gridY);
+//			System.out.println("old location: " + previousGridX + ", " + previousGridY);
+
+
+
+			PuzzleNode nodeToBeSwapped = controller.getNode(gridX, gridY);
+
+			if (nodeToBeSwapped != null && !nodeToBeSwapped.equals(this))
+			{
+				controller.swap(gridX, gridY, previousGridX, previousGridY);
+//				gridContainer.getChildren().remove(nodeToBeSwapped);
+//				gridContainer.add(nodeToBeSwapped, previousGridX, previousGridY);
+				int temp = GridPane.getRowIndex(this);
+				GridPane.setRowIndex(this, GridPane.getRowIndex(nodeToBeSwapped));
+				GridPane.setRowIndex(nodeToBeSwapped, temp);
+
+				temp = GridPane.getColumnIndex(this);
+				GridPane.setColumnIndex(this, GridPane.getColumnIndex(nodeToBeSwapped));
+				GridPane.setColumnIndex(nodeToBeSwapped, temp); // TODO store puzzle pieces in 2d array to solve lookup
+			}
+
+
+			gridContainer.add(this, gridX, gridY);
 		});
 	}
+
+	public void removeFromGrid()
+	{
+		if (!gridContainer.getChildren().contains(this)) // if the grid doesn't contain the node then ignore this function
+		{
+			System.out.println("returned");
+			return;
+		}
+
+		double x = this.getLayoutX();
+		double y = this.getLayoutY();
+
+		int gridX = (int) Math.round(x / width);
+		int gridY = (int) Math.round(y / height);
+
+		gridContainer.getChildren().remove(this);
+		mainContainer.getChildren().add(this);
+	}
+
+	public void setGridContainer(GridPane gridContainer)
+	{
+		this.gridContainer = gridContainer;
+	}
+
+	public void setMainContainer(AnchorPane mainContainer)
+	{
+		this.mainContainer = mainContainer;
+	}
+
 	public static int getWidth()
 	{
 		return width;
@@ -59,5 +138,41 @@ public class PuzzleNode extends ImageView
 	public static void setHeight(int height)
 	{
 		PuzzleNode.height = height;
+	}
+
+	public int getOriginalX()
+	{
+		return originalX;
+	}
+
+	public int getOriginalY()
+	{
+		return originalY;
+	}
+
+	public void setController(GameController controller)
+	{
+		this.controller = controller;
+	}
+
+	@Override
+	public boolean equals(Object o)
+	{
+		if (this == o)
+		{
+			return true;
+		}
+		if (o == null || getClass() != o.getClass())
+		{
+			return false;
+		}
+
+		PuzzleNode that = (PuzzleNode) o;
+
+		if (originalX != that.originalX)
+		{
+			return false;
+		}
+		return originalY == that.originalY;
 	}
 }
