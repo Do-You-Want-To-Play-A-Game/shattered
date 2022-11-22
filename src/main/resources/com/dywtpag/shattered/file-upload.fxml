@@ -2,18 +2,65 @@
 
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="1000.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dywtpag.shattered.FileUploadController">
+<AnchorPane fx:id="anchor" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dywtpag.shattered.FileUploadController">
    <children>
-      <VBox alignment="CENTER" layoutY="100.0" prefHeight="950.0" prefWidth="1000.0" AnchorPane.bottomAnchor="0.0">
+      <BorderPane layoutY="480.0" prefHeight="600.0" prefWidth="1920.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="480.0">
+         <bottom>
+            <BorderPane minHeight="50.0" style="-fx-background-color: #909dc6;" BorderPane.alignment="CENTER">
+               <center>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Do you want to play a game? 2022" BorderPane.alignment="CENTER">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="18.0" />
+                     </font>
+                  </Text>
+               </center>
+               <right>
+                  <ImageView fx:id="volumecontroll" fitHeight="50.0" fitWidth="50.0" onMouseClicked="#mute" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                     <BorderPane.margin>
+                        <Insets bottom="10.0" right="10.0" top="10.0" />
+                     </BorderPane.margin>
+                  </ImageView>
+               </right>
+            </BorderPane>
+         </bottom>
+      </BorderPane>
+      <HBox alignment="CENTER_LEFT" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="1000.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#backToHome" style="-fx-background-color: #B3C2F2;" text="Home" textFill="WHITE">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="18.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="20.0" top="10.0" />
+               </HBox.margin>
+               <effect>
+                  <DropShadow>
+                     <color>
+                        <Color opacity="0.800000011920929" />
+                     </color>
+                  </DropShadow>
+               </effect>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+         </children>
+      </HBox>
+      <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="960.0" prefWidth="1880.0" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="50.0">
          <children>
             <Label alignment="TOP_CENTER" contentDisplay="CENTER" text="Upload">
                <font>
@@ -23,56 +70,73 @@
                   <Insets bottom="30.0" />
                </VBox.margin>
             </Label>
-            <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#uploadAnImage" prefHeight="40.0" prefWidth="200.0" text="Choose File">
+            <Button fx:id="uploadbtn" contentDisplay="CENTER" mnemonicParsing="false" onAction="#uploadAnImage" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #B3C2F2;" text="Choose File" textFill="WHITE">
                <font>
                   <Font name="Arial Rounded MT Bold" size="18.0" />
                </font>
                <VBox.margin>
                   <Insets />
                </VBox.margin>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <effect>
+                  <DropShadow>
+                     <color>
+                        <Color opacity="0.800000011920929" />
+                     </color>
+                  </DropShadow>
+               </effect>
             </Button>
-            <ImageView fx:id="chosenImg" fitHeight="600.0" fitWidth="700.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="choosenImg" fitHeight="600.0" fitWidth="1079.0" pickOnBounds="true" preserveRatio="true">
                <VBox.margin>
                   <Insets top="30.0" />
                </VBox.margin>
             </ImageView>
-            <Label text="Difficulty">
+            <Label style="-fx-background-color: #8E94C1; -fx-border-color: grey; -fx-background-radius: 20; -fx-border-radius: 20;" text="Difficulty" textFill="WHITE">
                <font>
                   <Font name="Arial Rounded MT Bold" size="18.0" />
                </font>
                <VBox.margin>
                   <Insets top="20.0" />
                </VBox.margin>
+               <padding>
+                  <Insets left="30.0" right="30.0" />
+               </padding>
             </Label>
-            <ChoiceBox prefWidth="300.0">
+            <ChoiceBox prefWidth="300.0" style="-fx-background-color: #8E94C1;">
                <String fx:value="Easy" />
                <String fx:value="Medium" />
                <String fx:value="Hard" />
                <VBox.margin>
                   <Insets bottom="20.0" top="5.0" />
                </VBox.margin>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </ChoiceBox>
-            <Button mnemonicParsing="false" onAction="#moveToGame" text="Start Puzzle">
+            <Button fx:id="togameBtn" mnemonicParsing="false" onAction="#moveToGame" style="-fx-background-color: #B3C2F2;" text="Start Puzzle" textFill="WHITE">
                <font>
                   <Font name="Arial Rounded MT Bold" size="18.0" />
                </font>
                <VBox.margin>
-                  <Insets top="10.0" />
+                  <Insets bottom="30.0" top="10.0" />
                </VBox.margin>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <effect>
+                  <DropShadow>
+                     <color>
+                        <Color opacity="0.800000011920929" />
+                     </color>
+                  </DropShadow>
+               </effect>
             </Button>
          </children>
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </padding>
       </VBox>
-      <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="1000.0" AnchorPane.bottomAnchor="950.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <Button mnemonicParsing="false" onAction="#backToHome" text="Home">
-               <font>
-                  <Font name="Arial Rounded MT Bold" size="18.0" />
-               </font>
-               <HBox.margin>
-                  <Insets left="20.0" top="10.0" />
-               </HBox.margin>
-            </Button>
-         </children>
-      </HBox>
    </children>
 </AnchorPane>

@@ -7,7 +7,7 @@ module com.dywtpag.shattered {
 	requires software.amazon.awssdk.services.s3;
 	requires software.amazon.awssdk.regions;
 
-	opens com.dywtpag.shattered to javafx.fxml;
+    opens com.dywtpag.shattered to javafx.fxml;
 	exports com.dywtpag.shattered;
 	exports com.dywtpag.shattered.puzzle;
 }
