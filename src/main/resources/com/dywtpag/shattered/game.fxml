@@ -38,9 +38,6 @@
                   <BorderPane.margin>
                      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                   </BorderPane.margin>
-                  <children>
-                     <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
-                  </children>
                </GridPane>
             </center>
             <BorderPane.margin>
