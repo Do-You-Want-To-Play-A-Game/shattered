@@ -11,6 +11,9 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 public class GameController
 {
@@ -34,11 +37,7 @@ public class GameController
 		int rows = 10;
 		int cols = 5;
 		puzzle = PuzzleCreator.createPuzzle(FileUploadController.getImgToChop(), rows, cols);
-		//todo I think the rows and columns are backwards (its making 10 col 5 rows instead of 10 rows 5 col) fix
-		// this later
-
-		//todo let rows and columns be changed (with difficulty selection)
-
+		shuffle2dArray(puzzle);
 
 
 		for (int i = 0; i < puzzle.length; i++)
@@ -54,12 +53,44 @@ public class GameController
 				puzzleNode.setMainContainer(main);
 				puzzleNode.setController(this);
 
-//				grid.addRow(j);
 				grid.add(puzzleNode, i, j);
+
+//				grid.addRow(j);
 
 //				main.getChildren().add(puzzleNode);
 			}
 		}
+	}
+
+	private void shuffle2dArray(PuzzleNode[][] puzzle)
+	{
+		PuzzleNode[] flattenedArray = new PuzzleNode[puzzle.length * puzzle[0].length];
+
+		int count = 0;
+		for (PuzzleNode[] puzzleNodes : puzzle)
+		{
+			for (int j = 0; j < puzzle[0].length; j++)
+			{
+				flattenedArray[count] = puzzleNodes[j];
+				count++;
+			}
+		}
+
+		List<PuzzleNode> puzzleNodeList = Arrays.asList(flattenedArray);
+		Collections.shuffle(puzzleNodeList);
+
+		puzzleNodeList.toArray(flattenedArray);
+
+		count = 0;
+		for (int i = 0; i < puzzle.length; i++)
+		{
+			for (int j = 0; j < puzzle[0].length; j++)
+			{
+				puzzle[i][j] = flattenedArray[count];
+				count++;
+			}
+		}
+
 	}
 
 	public PuzzleNode getNode(int x, int y)
@@ -77,7 +108,7 @@ public class GameController
 	}
 
 	@FXML
-	public void initialize() throws IOException
+	public void initialize()
 	{
 		image.setImage(SwingFXUtils.toFXImage(FileUploadController.getImgToChop(), null));
 		image.setFitWidth(grid.getWidth());
@@ -90,6 +121,7 @@ public class GameController
 	{
 		System.out.println("start");
 		main.getChildren().remove(image);
+		main.getChildren().remove(startButton);
 		makeGame();
 	}
 }

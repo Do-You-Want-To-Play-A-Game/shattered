@@ -8,4 +8,5 @@ module com.dywtpag.shattered {
 
     opens com.dywtpag.shattered to javafx.fxml;
 	exports com.dywtpag.shattered;
+	exports com.dywtpag.shattered.puzzle;
 }
