@@ -1,6 +1,6 @@
 package com.dywtpag.shattered;
 
-import bhlieberman.s3.client.Client;
+//import bhlieberman.s3.client.Client;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -57,6 +57,11 @@ public class GalleryView {
         stage.show();
     }
 
+//    private void loadS3Images(String bucket, String key)
+//    {
+//        BufferedImage s3Result = Client.getImage(bucket, key);
+//        s3Images.add(s3Result);
+//    }
 
     @FXML
     public void initialize() throws IOException {
@@ -64,11 +69,6 @@ public class GalleryView {
         Image imageBack = new Image(HelloApplication.class.getResource("AdobeStock_268548990.jpeg").toString());
 
         BackgroundImage backgroundImage = new BackgroundImage(imageBack, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(1.0,1.0,true,true,false,false));
-    private void loadS3Images(String bucket, String key) {
-        BufferedImage s3Result = Client.getImage(bucket, key);
-        s3Images.add(s3Result);
-    }
-
 
         anchor.setBackground(new Background(backgroundImage));
 
