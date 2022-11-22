@@ -35,12 +35,12 @@ public class GameController
 	@FXML
 	public Button startButton;
 
-	@FXML
-	public ImageView image;
+	public BorderPane Initial;
+	public ImageView preview;
+	public BorderPane imgBorder;
 
 	private PuzzleNode[][] puzzle;
 
-	public AnchorPane anchor;
 	public TextField timeBox;
 	public ImageView volume;
 
@@ -48,13 +48,12 @@ public class GameController
 	{
 		int rows = 10;
 		int cols = 5;
-		puzzle = PuzzleCreator.createPuzzle(FileUploadController.getImgToChop(), rows, cols);
+		puzzle = PuzzleCreator.createPuzzle(FileUploadController.imgToChop, rows, cols);
 		shuffle2dArray(puzzle);
 
 
 		for (int i = 0; i < puzzle.length; i++)
 		{
-//			grid.addColumn(i);
 			PuzzleNode[] puzzleNodeRow = puzzle[i];
 
 			for (int j = 0; j < puzzleNodeRow.length; j++)
@@ -67,9 +66,6 @@ public class GameController
 
 				grid.add(puzzleNode, i, j);
 
-//				grid.addRow(j);
-
-//				main.getChildren().add(puzzleNode);
 			}
 		}
 	}
@@ -122,17 +118,14 @@ public class GameController
 	@FXML
 	public void initialize()
 	{
-		image.setImage(SwingFXUtils.toFXImage(FileUploadController.getImgToChop(), null));
-		image.setFitWidth(grid.getWidth());
-		image.setFitHeight(grid.getHeight());
+		preview.setImage(SwingFXUtils.toFXImage(FileUploadController.imgToChop, null));
+
 		startButton.setOnMouseClicked(event -> start());
 
 		Image background = new Image(HelloApplication.class.getResource("tableTop.jpeg").toString());
 
 		//allows the image to be scaled by the window size
-		BackgroundImage bgImage = new BackgroundImage(background, BackgroundRepeat.NO_REPEAT,
-				BackgroundRepeat.NO_REPEAT,
-				BackgroundPosition.CENTER, new BackgroundSize(1.0, 1.0, true, true, false, false));
+		BackgroundImage bgImage = new BackgroundImage(background, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(1.0, 1.0, true, true, false, false));
 
 		//sets the background of the root pane to the background image
 		main.setBackground(new Background(bgImage));
@@ -154,10 +147,11 @@ public class GameController
 	@FXML
 	public void start()
 	{
-		System.out.println("start");
-		main.getChildren().remove(image);
-		main.getChildren().remove(startButton);
+		imgBorder.getChildren().remove(preview);
+		Initial.getChildren().remove(startButton);
+
 		makeGame();
+
 		timer.start();
 	}
 

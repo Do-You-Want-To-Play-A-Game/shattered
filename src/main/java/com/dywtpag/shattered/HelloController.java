@@ -89,7 +89,8 @@ public class HelloController
 		GraphicsDevice gd  = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
 		int width = gd.getDisplayMode().getWidth() - 700;
 		int height = gd.getDisplayMode().getHeight() - 400;
-		scene = new Scene(uploader,width,height);
+
+		scene = new Scene(uploader, width, height);
 		stage.setScene(scene);
 		stage.show();
 	}

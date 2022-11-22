@@ -64,7 +64,7 @@
             </effect>
           </Label>
       
-                                                                <Button fx:id="Uploader" onAction="#toUploader" prefHeight="100.0" prefWidth="500.0" style="-fx-background-color: #B3C2F2; -fx-background-radius: 20;" text="File Upload" textAlignment="CENTER" textFill="WHITE">
+          <Button fx:id="Uploader" onAction="#toUploader" prefHeight="100.0" prefWidth="500.0" style="-fx-background-color: #B3C2F2; -fx-background-radius: 20;" text="File Upload" textAlignment="CENTER" textFill="WHITE">
             <font>
                <Font name="Arial Rounded MT Bold" size="24.0" />
             </font>
@@ -80,7 +80,7 @@
             </effect>
           </Button>
 
-                                                                  <Button fx:id="Gallery" prefHeight="100.0" prefWidth="500.0" style="-fx-background-color: #B3C2F2; -fx-background-radius: 20;" text="Gallery" textFill="WHITE">
+            <Button fx:id="Gallery" prefHeight="100.0" prefWidth="500.0" style="-fx-background-color: #B3C2F2; -fx-background-radius: 20;" text="Gallery" textFill="WHITE">
             <font>
                <Font name="Arial Rounded MT Bold" size="24.0" />
             </font>

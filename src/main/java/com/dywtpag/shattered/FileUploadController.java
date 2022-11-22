@@ -30,6 +30,11 @@ public class FileUploadController {
     Stage stage;
     Scene scene;
 
+    public static boolean easy;
+    public  static boolean medium;
+    public static boolean hard;
+
+
     @FXML
     public void initialize() {
         //grabs the background image
@@ -91,15 +96,6 @@ public class FileUploadController {
         imgToChop = buffedImg;
     }
 
-    public static BufferedImage getImgToChop()
-    {
-        return imgToChop;
-    }
-
-    public static void setImgToChop(BufferedImage imgToChop)
-    {
-        FileUploadController.imgToChop = imgToChop;
-    }
 
     @FXML
     protected void moveToGame(ActionEvent event) throws IOException {
