@@ -1,16 +1,14 @@
 package com.dywtpag.shattered.puzzle;
 
-import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
 public class PuzzleCreator
 {
-	public static ArrayList<BufferedImage> createPuzzle(BufferedImage image, int rows, int columns) throws IOException
+	public static PuzzleNode[][] createPuzzle(BufferedImage image, int rows, int columns)
 	{
-		ArrayList<BufferedImage> pieces = new ArrayList<>();
+		PuzzleNode[][] pieces = new PuzzleNode[rows][columns];
 
 		int height = image.getHeight();
 		int width = image.getWidth();
@@ -18,20 +16,22 @@ public class PuzzleCreator
 		int puzzleHeight = height / columns;
 		int puzzleWidth = width / rows;
 
+		PuzzleNode.setHeight(puzzleHeight);
+		PuzzleNode.setWidth(puzzleWidth);
+
 		for (int x = 0; x < width; x += puzzleWidth)
 		{
 			for (int y = 0; y < height; y += puzzleHeight)
 			{
+				//TODO cut off excess if error
 				BufferedImage subImage = image.getSubimage(x, y, puzzleWidth, puzzleHeight);
-				pieces.add(subImage);
-//				ImageIO.write(subImage, "bmp", new File("result" + x + "-" + y + ".jpg"));
-//				System.out.println("x range:" + x + " - " + (x + puzzleWidth));
-//				System.out.println("y range: " + y + " - " + (y + puzzleHeight));
-//				System.out.println();
+
+				PuzzleNode puzzleNode = new PuzzleNode(subImage, x, y);
+				pieces[x / puzzleWidth][y / puzzleHeight] = puzzleNode;
 			}
 		}
 
 		return pieces;
 	}
+  
 }
-
