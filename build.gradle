@@ -37,7 +37,7 @@ dependencies {
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
-    implementation files('C:/Users/bhlie/Desktop/clj_code/aws/target/s3.client-0.0.1.jar')
+    implementation files('libs/s3.client-0.0.2.jar')
     runtimeOnly('org.clojure:clojure:1.11.1')
     implementation('com.cognitect.aws:api:0.8.612')
     implementation('com.cognitect.aws:endpoints:1.1.12.321')
