@@ -5,6 +5,8 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -22,7 +24,21 @@
                <font>
                   <Font name="Arial Rounded MT Bold" size="14.0" />
                </font>
+               <HBox.margin>
+                  <Insets left="800.0" />
+               </HBox.margin>
             </Text>
+            <ImageView fx:id="volume" fitHeight="100.0" fitWidth="100.0" onMouseClicked="#mute" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@volume-on.png" />
+               </image>
+               <HBox.margin>
+                  <Insets bottom="10.0" left="600.0" right="20.0" />
+               </HBox.margin>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
          </children>
       </HBox>
       <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="50.0" AnchorPane.bottomAnchor="205.0" AnchorPane.leftAnchor="160.0" AnchorPane.rightAnchor="160.0" AnchorPane.topAnchor="205.0">
@@ -72,11 +88,11 @@
             </effect>
          </Button>
 
-                                                                                                                  
                      <padding>
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
          </padding>
       
                   </VBox>
+
    </children>
 </AnchorPane>

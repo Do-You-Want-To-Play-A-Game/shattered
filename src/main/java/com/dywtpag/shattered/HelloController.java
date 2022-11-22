@@ -23,6 +23,7 @@ public class HelloController
 {
 	public Button Uploader;
 	public Button Gallery;
+	public ImageView volume;
 	Scene scene;
 	Stage stage;
 	@FXML
@@ -31,6 +32,8 @@ public class HelloController
 	public Rectangle rectangle;
 	@FXML
 	private Label welcomeText;
+
+	boolean volumeOn = true;
 
 
 	@FXML
@@ -68,18 +71,18 @@ public class HelloController
 	@FXML
 	public  void fadeOut(){
 		FadeTransition fadeTransition =new FadeTransition(new Duration(2000), anchor);
-		fadeTransition.setFromValue(1.0);
-		fadeTransition.setToValue(0.3);
-		fadeTransition.setCycleCount(4);
+		fadeTransition.setFromValue(1);
+		fadeTransition.setToValue(0);
 		fadeTransition.play();
 	}
 
 	@FXML
 	protected void toUploader(ActionEvent event) throws IOException {
+
+		fadeOut();
 		Parent uploader = FXMLLoader.load(getClass().getResource("file-upload.fxml"));
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 
-		fadeOut();
 		// gets the width and height of the device the app is loaded on
 		GraphicsDevice gd  = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
 		int width = gd.getDisplayMode().getWidth() - 700;
@@ -87,6 +90,19 @@ public class HelloController
 		scene = new Scene(uploader,width,height);
 		stage.setScene(scene);
 		stage.show();
+	}
+
+	public void mute(){
+		Image muted = new Image(HelloApplication.class.getResource("muted-volume.png").toString());
+		Image Full = new Image(HelloApplication.class.getResource("volume-on.png").toString());
+
+		if(volumeOn){
+			volume.setImage(Full);
+			volumeOn = false;
+		} else if (!volumeOn) {
+			volume.setImage(muted);
+			volumeOn = true;
+		}
 	}
 
 }
