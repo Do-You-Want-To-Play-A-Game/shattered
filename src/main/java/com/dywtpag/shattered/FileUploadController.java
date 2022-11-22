@@ -26,28 +26,39 @@ public class FileUploadController {
     public AnchorPane anchor;
     public Button uploadbtn;
     public Button togameBtn;
+    public ImageView volumecontroll;
     Stage stage;
     Scene scene;
 
     @FXML
-    public void initialize(){
+    public void initialize() {
         //grabs the background image
         Image image = new Image(HelloApplication.class.getResource("uploader-img.jpeg").toString());
 
         //allows the image to be scaled by the window size
-        BackgroundImage bgImage = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(1.0,1.0,true, true, false,false));
+        BackgroundImage bgImage = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(1.0, 1.0, true, true, false, false));
 
         //sets the background of the root pane to the background image
         anchor.setBackground(new Background(bgImage));
 //
         HelloController.movementAnimation(uploadbtn);
         HelloController.movementAnimation(togameBtn);
+
+        //Initial image set for the background music. this carries over from the home menu
+        Image muted = new Image(HelloApplication.class.getResource("muted-volume.png").toString());
+        Image Full = new Image(HelloApplication.class.getResource("volume-on.png").toString());
+
+        if (HelloController.volumeOn) {
+            volumecontroll.setImage(Full);
+        } else if (!HelloController.volumeOn) {
+            volumecontroll.setImage(muted);
+        }
     }
 
     @FXML
     protected void backToHome(ActionEvent event) throws IOException {
         Parent home_page = FXMLLoader.load(getClass().getResource("home.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(home_page);
         stage.setScene(scene);
         stage.show();
@@ -65,7 +76,7 @@ public class FileUploadController {
         FileChooser.ExtensionFilter PNGFilter = new FileChooser.ExtensionFilter("any png file", "*.PNG");
 
         //add these filters to the file chooser
-        fileChooser.getExtensionFilters().addAll(jpgFilter,JPGFilter,pngFilter,PNGFilter);
+        fileChooser.getExtensionFilters().addAll(jpgFilter, JPGFilter, pngFilter, PNGFilter);
 
         //file opening dialogue
         File file = fileChooser.showOpenDialog(null);
@@ -81,17 +92,31 @@ public class FileUploadController {
     }
 
     @FXML
-        protected void moveToGame(ActionEvent event) throws IOException {
+    protected void moveToGame(ActionEvent event) throws IOException {
 
-            // gets the width and height of the device the app is loaded on
-            GraphicsDevice gd  = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
-            int width = gd.getDisplayMode().getWidth() - 700;
-            int height = gd.getDisplayMode().getHeight() - 400;
+        // gets the width and height of the device the app is loaded on
+        GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+        int width = gd.getDisplayMode().getWidth() - 700;
+        int height = gd.getDisplayMode().getHeight() - 400;
 
-            Parent game = FXMLLoader.load(getClass().getResource("game.fxml"));
-            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            scene = new Scene(game, width, height);
-            stage.setScene(scene);
-            stage.show();
+        Parent game = FXMLLoader.load(getClass().getResource("game.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(game, width, height);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void mute() {
+        Image muted = new Image(HelloApplication.class.getResource("muted-volume.png").toString());
+        Image Full = new Image(HelloApplication.class.getResource("volume-on.png").toString());
+
+        if (HelloController.volumeOn) {
+            volumecontroll.setImage(muted);
+            HelloController.volumeOn = false;
+        } else if (!HelloController.volumeOn) {
+            volumecontroll.setImage(Full);
+            HelloController.volumeOn = true;
         }
+
+    }
 }

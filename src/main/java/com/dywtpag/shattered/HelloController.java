@@ -24,6 +24,7 @@ public class HelloController
 	public Button Uploader;
 	public Button Gallery;
 	public ImageView volume;
+	public BorderPane footer;
 	Scene scene;
 	Stage stage;
 	@FXML
@@ -33,7 +34,7 @@ public class HelloController
 	@FXML
 	private Label welcomeText;
 
-	boolean volumeOn = true;
+	public static boolean volumeOn = true;
 
 
 	@FXML
@@ -50,6 +51,7 @@ public class HelloController
 
 		//sets the background of the root pane to the background image
 		anchor.setBackground(new Background(bgImage));
+
 	}
 	@FXML
 	public static void movementAnimation(Node node){
@@ -97,10 +99,10 @@ public class HelloController
 		Image Full = new Image(HelloApplication.class.getResource("volume-on.png").toString());
 
 		if(volumeOn){
-			volume.setImage(Full);
+			volume.setImage(muted);
 			volumeOn = false;
 		} else if (!volumeOn) {
-			volume.setImage(muted);
+			volume.setImage(Full);
 			volumeOn = true;
 		}
 	}

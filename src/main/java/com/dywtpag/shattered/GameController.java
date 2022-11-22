@@ -25,6 +25,7 @@ public class GameController {
 
     public AnchorPane anchor;
     public TextField timeBox;
+    public ImageView volume;
     DraggableMouse draggableMouse = new DraggableMouse();
 
     @FXML
@@ -60,6 +61,16 @@ public class GameController {
         //sets the background of the root pane to the background image
         anchor.setBackground(new Background(bgImage));
         timer.start();
+
+        //Initial image set for the background music. this carries over from the home menu
+        Image muted = new Image(HelloApplication.class.getResource("muted-volume.png").toString());
+        Image Full = new Image(HelloApplication.class.getResource("volume-on.png").toString());
+
+        if (HelloController.volumeOn) {
+            volume.setImage(Full);
+        } else if (!HelloController.volumeOn) {
+            volume.setImage(muted);
+        }
     }
 
     @FXML
@@ -87,5 +98,19 @@ public class GameController {
              timeBox.setText(hours+":"+minuets+":"+seconds);
          }
      });
+
+    public void mute() {
+        Image muted = new Image(HelloApplication.class.getResource("muted-volume.png").toString());
+        Image Full = new Image(HelloApplication.class.getResource("volume-on.png").toString());
+
+        if (HelloController.volumeOn) {
+            volume.setImage(muted);
+            HelloController.volumeOn = false;
+        } else if (!HelloController.volumeOn) {
+            volume.setImage(Full);
+            HelloController.volumeOn = true;
+        }
+
+    }
 
 }
