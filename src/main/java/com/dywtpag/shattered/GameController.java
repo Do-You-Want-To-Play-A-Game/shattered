@@ -147,8 +147,8 @@ public class GameController
 	@FXML
 	public void start()
 	{
-		imgBorder.getChildren().remove(preview);
-		Initial.getChildren().remove(startButton);
+		main.getChildren().remove(imgBorder);
+		main.getChildren().remove(Initial);
 
 		makeGame();
 
