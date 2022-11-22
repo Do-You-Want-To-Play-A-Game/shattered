@@ -15,7 +15,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dywtpag.shattered.HomeController">
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dywtpag.shattered.HelloController">
    <children>
       <ImageView fitHeight="1000.0" fitWidth="1000.0" focusTraversable="true" pickOnBounds="true" style="-fx-opacity: 0.7;">
          <image>
@@ -25,7 +25,7 @@
             <Rectangle2D />
          </viewport>
       </ImageView>
-      <VBox alignment="CENTER" prefHeight="1000.0" prefWidth="1000.0" spacing="50.0">
+      <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="1000.0" prefWidth="1000.0" spacing="50.0">
       
                      <Rectangle fx:id="rectangle" arcHeight="3.0" arcWidth="3.0" fill="#6b6442" height="100.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="100.0" />
       
@@ -58,7 +58,7 @@
             </effect>
           </Button>
       
-                     <Button mnemonicParsing="false" fx:id="gallery" onAction="#toGallery" prefHeight="100.0" prefWidth="500.0" style="-fx-background-color: #B3C2F2; -fx-background-radius: 20;" text="Gallery" textFill="WHITE">
+                     <Button mnemonicParsing="false" onAction="#Falling" prefHeight="100.0" prefWidth="500.0" style="-fx-background-color: #B3C2F2; -fx-background-radius: 20;" text="Gallery" textFill="WHITE">
             <font>
                <Font name="Arial Rounded MT Bold" size="24.0" />
             </font>

@@ -14,7 +14,7 @@ public class HelloApplication extends Application
 	{
 		
 		Image icon = new Image(HelloApplication.class.getResource("testIcon.jpeg").toString());
-		HomeController helloController = new HomeController();
+		HelloController helloController = new HelloController();
 		
 		FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("home.fxml"));
 		Scene scene = new Scene(fxmlLoader.load(),1000,1000);
