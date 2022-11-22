@@ -91,6 +91,16 @@ public class FileUploadController {
         imgToChop = buffedImg;
     }
 
+    public static BufferedImage getImgToChop()
+    {
+        return imgToChop;
+    }
+
+    public static void setImgToChop(BufferedImage imgToChop)
+    {
+        FileUploadController.imgToChop = imgToChop;
+    }
+
     @FXML
     protected void moveToGame(ActionEvent event) throws IOException {
 
@@ -119,4 +129,6 @@ public class FileUploadController {
         }
 
     }
+
+
 }

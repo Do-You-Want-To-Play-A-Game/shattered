@@ -6,6 +6,10 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.text.Font?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.Image?>
 <AnchorPane fx:id="main" xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.dywtpag.shattered.GameController"
@@ -18,8 +22,6 @@
             <Font size="37.0" />
         </font>
     </Button>
-
-    <children>
         <BorderPane minHeight="50.0" minWidth="500.0" prefHeight="60.0" prefWidth="1920.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <center>
                 <BorderPane minWidth="500.0">
@@ -34,17 +36,17 @@
                         </TextField>
                     </center>
                     <right>
-                        <ImageView fx:id="volume" fitHeight="50.0" fitWidth="50.0" onMouseClicked="#mute" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
-                            <image>
-                                <Image url="@volume-on.png" />
-                            </image>
-                            <cursor>
-                                <Cursor fx:constant="HAND" />
-                            </cursor>
-                            <BorderPane.margin>
-                                <Insets left="840.0" right="20.0" top="10.0" />
-                            </BorderPane.margin>
-                        </ImageView>
+<!--                        <ImageView fx:id="volume" fitHeight="50.0" fitWidth="50.0" onMouseClicked="#mute" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">-->
+<!--                            <image>-->
+<!--                                <Image url="@volume-on.png" />-->
+<!--                            </image>-->
+<!--                            <cursor>-->
+<!--                                <Cursor fx:constant="HAND" />-->
+<!--                            </cursor>-->
+<!--                            <BorderPane.margin>-->
+<!--                                <Insets left="840.0" right="20.0" top="10.0" />-->
+<!--                            </BorderPane.margin>-->
+<!--                        </ImageView>-->
                     </right>
                     <left>
                         <Button mnemonicParsing="false" onAction="#backToHome" style="-fx-background-color: #B3C2F2;" text="Home" textFill="WHITE" BorderPane.alignment="CENTER">
@@ -62,5 +64,4 @@
                 </BorderPane>
             </center>
         </BorderPane>
-    </children>
 </AnchorPane>

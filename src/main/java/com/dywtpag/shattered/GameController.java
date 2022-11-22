@@ -135,8 +135,7 @@ public class GameController
 				BackgroundPosition.CENTER, new BackgroundSize(1.0, 1.0, true, true, false, false));
 
 		//sets the background of the root pane to the background image
-		anchor.setBackground(new Background(bgImage));
-		timer.start();
+		main.setBackground(new Background(bgImage));
 
 		//Initial image set for the background music. this carries over from the home menu
 		Image muted = new Image(HelloApplication.class.getResource("muted-volume.png").toString());
@@ -159,6 +158,7 @@ public class GameController
 		main.getChildren().remove(image);
 		main.getChildren().remove(startButton);
 		makeGame();
+		timer.start();
 	}
 
 	@FXML

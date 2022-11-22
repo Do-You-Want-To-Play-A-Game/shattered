@@ -22,7 +22,7 @@ public class GameTest extends Application
 	@Override
 	public void start(Stage stage) throws IOException
     {
-        BufferedImage image = ImageIO.read(getClass().getResource("testImage.jpg"));
+        BufferedImage image = ImageIO.read(getClass().getResource("japa-walpaper.jpg"));
         FileUploadController.setImgToChop(image);
 
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("game.fxml"));
