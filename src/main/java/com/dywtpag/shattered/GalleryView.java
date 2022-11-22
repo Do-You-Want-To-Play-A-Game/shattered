@@ -36,7 +36,7 @@ public class GalleryView {
 
     Scene scene;
 
-    private final ArrayList<BufferedImage> s3Images = new ArrayList<>();
+    private ArrayList<Image> s3Images = new ArrayList<>();
 
 
     // Home Route
@@ -60,80 +60,28 @@ public class GalleryView {
 
     @FXML
     public void initialize() throws IOException {
-
+        s3Images = loadS3Images("images-jigsaw-game", "self.jpg");
         Image imageBack = new Image(HelloApplication.class.getResource("AdobeStock_268548990.jpeg").toString());
 
         BackgroundImage backgroundImage = new BackgroundImage(imageBack, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(1.0,1.0,true,true,false,false));
-    private void loadS3Images(String bucket, String key) {
-        BufferedImage s3Result = Client.getImage(bucket, key);
-        s3Images.add(s3Result);
-    }
 
 
         anchor.setBackground(new Background(backgroundImage));
 
-
-
-        Image image = new Image(HelloApplication.class.getResource("test.png").toString());
-        ArrayList<ImageView> imageArrayList = new ArrayList<ImageView>();
-        ImageView imageview = new ImageView();
-        imageview.setImage(image);
-        imageview.setFitHeight(100);
-        imageview.setFitWidth(100);
-        ImageView imageview1 = new ImageView();
-        imageview1.setImage(image);
-        imageview1.setFitHeight(100);
-        imageview1.setFitWidth(100);
-        ImageView imageview2 = new ImageView();
-        imageview2.setImage(image);
-        imageview2.setFitHeight(100);
-        imageview2.setFitWidth(100);
-        ImageView imageview3 = new ImageView();
-        imageview3.setImage(image);
-        imageview3.setFitHeight(100);
-        imageview3.setFitWidth(100);
-        ImageView imageview4 = new ImageView();
-        imageview4.setImage(image);
-        imageview4.setFitHeight(100);
-        imageview4.setFitWidth(100);
-        ImageView imageview5 = new ImageView();
-        imageview5.setImage(image);
-        imageview5.setFitHeight(100);
-        imageview5.setFitWidth(100);
-        ImageView imageview6 = new ImageView();
-        imageview6.setImage(image);
-        imageview6.setFitHeight(100);
-        imageview6.setFitWidth(100);
-        ImageView imageview7 = new ImageView();
-        imageview7.setImage(image);
-        imageview7.setFitHeight(100);
-        imageview7.setFitWidth(100);
-        ImageView imageview8 = new ImageView();
-        imageview8.setImage(image);
-        imageview8.setFitHeight(100);
-        imageview8.setFitWidth(100);
-        ImageView imageview9 = new ImageView();
-        imageview9.setImage(image);
-        imageview9.setFitHeight(100);
-        imageview9.setFitWidth(100);
-        ImageView imageview10 = new ImageView();
-        imageview10.setImage(image);
-        imageview10.setFitHeight(100);
-        imageview10.setFitWidth(150);
-        imageArrayList.add(imageview);
-        imageArrayList.add(imageview1);
-        imageArrayList.add(imageview2);
-        imageArrayList.add(imageview3);
-        imageArrayList.add(imageview4);
-        imageArrayList.add(imageview5);
         Integer currRow = -1;
-        for (int i = 0; i < imageArrayList.size(); i++) {
+        for (int i = 0; i < s3Images.size(); i++) {
           if ( i % 3 == 0 ) {
                 currRow++;
             }
-            imageGallery.add( imageArrayList.get(i),i % 3, currRow );
+            imageGallery.add(new ImageView(s3Images.get(i)),i % 3, currRow );
             System.out.println(imageGallery);
       }
 
         }
+    private ArrayList<Image> loadS3Images(String bucket, String key) throws IOException {
+        ArrayList<Image> s3Images = new ArrayList<>();
+        BufferedImage s3Result = S3.getImage(bucket, key);
+        s3Images.add(SwingFXUtils.toFXImage(s3Result, null));
+        return s3Images;
+    }
     }

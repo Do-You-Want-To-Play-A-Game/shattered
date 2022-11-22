@@ -38,7 +38,6 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
     implementation('software.amazon.awssdk:s3:2.18.23')
-
 }
 
 test {
