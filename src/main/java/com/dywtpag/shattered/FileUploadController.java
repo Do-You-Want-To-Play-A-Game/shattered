@@ -7,11 +7,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.*;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javax.imageio.ImageIO;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -20,8 +23,26 @@ public class FileUploadController {
 
     public static BufferedImage imgToChop;
     public ImageView choosenImg;
+    public AnchorPane anchor;
+    public Button uploadbtn;
+    public Button togameBtn;
     Stage stage;
     Scene scene;
+
+    @FXML
+    public void initialize(){
+        //grabs the background image
+        Image image = new Image(HelloApplication.class.getResource("uploader-img.jpeg").toString());
+
+        //allows the image to be scaled by the window size
+        BackgroundImage bgImage = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(1.0,1.0,true, true, false,false));
+
+        //sets the background of the root pane to the background image
+        anchor.setBackground(new Background(bgImage));
+//
+        HelloController.movementAnimation(uploadbtn);
+        HelloController.movementAnimation(togameBtn);
+    }
 
     @FXML
     protected void backToHome(ActionEvent event) throws IOException {
@@ -62,9 +83,14 @@ public class FileUploadController {
     @FXML
         protected void moveToGame(ActionEvent event) throws IOException {
 
+            // gets the width and height of the device the app is loaded on
+            GraphicsDevice gd  = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+            int width = gd.getDisplayMode().getWidth() - 700;
+            int height = gd.getDisplayMode().getHeight() - 400;
+
             Parent game = FXMLLoader.load(getClass().getResource("game.fxml"));
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            scene = new Scene(game);
+            scene = new Scene(game, width, height);
             stage.setScene(scene);
             stage.show();
         }

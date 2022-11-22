@@ -9,15 +9,18 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.Pane;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.*;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+
+import java.awt.*;
 import java.io.IOException;
 
 public class HelloController
 {
-	@FXML
 	public Button Uploader;
 	public Button Gallery;
 	Scene scene;
@@ -32,36 +35,21 @@ public class HelloController
 
 	@FXML
 	public void initialize(){
+		//animation for buttons
 		movementAnimation(Uploader);
 		movementAnimation(Gallery);
+
+		//grabs the background image
+		Image image = new Image(HelloApplication.class.getResource("homeMountain.jpeg").toString());
+
+		//allows the image to be scaled by the window size
+		BackgroundImage bgImage = new BackgroundImage(image,BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(1.0,1.0,true, true, false,false));
+
+		//sets the background of the root pane to the background image
+		anchor.setBackground(new Background(bgImage));
 	}
 	@FXML
-	public void Falling() {
-
-
-		KeyValue start = new KeyValue(rectangle.translateYProperty(),200);
-		KeyValue end = new KeyValue(rectangle.translateYProperty(), 700);
-		KeyValue bounceStart = new KeyValue(rectangle.translateYProperty(), 300);
-		KeyValue v4 = new KeyValue(rectangle.translateYProperty(), 400);
-
-		KeyFrame frame = new KeyFrame(Duration.millis(1000), start, end);
-		KeyFrame upFrame = new KeyFrame(Duration.millis(500), end, bounceStart);
-		KeyFrame downFrame = new KeyFrame(Duration.millis(400),bounceStart, end);
-		KeyFrame k4 = new KeyFrame(Duration.millis(300),v4);
-		KeyFrame k5 = new KeyFrame(Duration.millis(200),end);
-
-		Timeline timeline = new Timeline(frame);
-		Timeline timeline1 = new Timeline(upFrame);
-		Timeline timeline2 = new Timeline(downFrame);
-		Timeline timeline3 = new Timeline(k4);
-		Timeline timeline4 = new Timeline(k5);
-
-		SequentialTransition sequence = new SequentialTransition(timeline, timeline1, timeline2, timeline3, timeline4);
-		 sequence.play();
-	}
-
-	@FXML
-	public void movementAnimation(Node node){
+	public static void movementAnimation(Node node){
 		KeyValue start = new KeyValue(node.translateYProperty(), 10);
 		KeyValue end = new KeyValue(node.translateYProperty(), -10);
 
@@ -77,21 +65,26 @@ public class HelloController
 		 sequence.play();
 	}
 
-	private  void fadeOut(){
-		FadeTransition fadeTransition =new FadeTransition();
-		fadeTransition.setDuration(Duration.millis(2000));
-		fadeTransition.setNode(anchor);
-		fadeTransition.setFromValue(1);
-		fadeTransition.setToValue(0);
+	@FXML
+	public  void fadeOut(){
+		FadeTransition fadeTransition =new FadeTransition(new Duration(2000), anchor);
+		fadeTransition.setFromValue(1.0);
+		fadeTransition.setToValue(0.3);
+		fadeTransition.setCycleCount(4);
 		fadeTransition.play();
 	}
 
 	@FXML
 	protected void toUploader(ActionEvent event) throws IOException {
-		fadeOut();
 		Parent uploader = FXMLLoader.load(getClass().getResource("file-upload.fxml"));
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-		scene = new Scene(uploader);
+
+		fadeOut();
+		// gets the width and height of the device the app is loaded on
+		GraphicsDevice gd  = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+		int width = gd.getDisplayMode().getWidth() - 700;
+		int height = gd.getDisplayMode().getHeight() - 400;
+		scene = new Scene(uploader,width,height);
 		stage.setScene(scene);
 		stage.show();
 	}
