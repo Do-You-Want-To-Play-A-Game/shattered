@@ -3,13 +3,21 @@ package com.dywtpag.shattered;
 import com.dywtpag.shattered.puzzle.PuzzleCreator;
 import com.dywtpag.shattered.puzzle.PuzzleNode;
 import javafx.embed.swing.SwingFXUtils;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
+import javafx.scene.layout.*;
+import javafx.stage.Stage;
 
+import javax.swing.*;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collections;
@@ -23,26 +31,25 @@ public class GameController
 
 	@FXML
 	public GridPane grid;
-
 	@FXML
 	public Button startButton;
 
-	@FXML
-	public ImageView image;
-
+	public ImageView preview;
 	private PuzzleNode[][] puzzle;
+
+
 
 	public void makeGame()
 	{
-		int rows = 3;
-		int cols = 3;
-		puzzle = PuzzleCreator.createPuzzle(FileUploadController.getImgToChop(), rows, cols);
+		int rows = 10;
+		int cols = 5;
+		puzzle = PuzzleCreator.createPuzzle(FileUploadController.imgToChop, rows, cols);
+
 		shuffle2dArray(puzzle);
 
 
 		for (int i = 0; i < puzzle.length; i++)
 		{
-//			grid.addColumn(i);
 			PuzzleNode[] puzzleNodeRow = puzzle[i];
 
 			for (int j = 0; j < puzzleNodeRow.length; j++)
@@ -58,6 +65,7 @@ public class GameController
 		}
 	}
 
+
 	public void checkForWin()
 	{
 		for (int i = 0; i < puzzle.length; i++)
@@ -70,6 +78,7 @@ public class GameController
 					System.out.println(puzzleNodes[j].getOriginalX() + ", " + puzzleNodes[j].getOriginalY());
 					return;
 				}
+
 			}
 		}
 
@@ -133,18 +142,38 @@ public class GameController
 	@FXML
 	public void initialize()
 	{
-		image.setImage(SwingFXUtils.toFXImage(FileUploadController.getImgToChop(), null));
-		image.setFitWidth(grid.getWidth());
-		image.setFitHeight(grid.getHeight());
+		preview.setImage(SwingFXUtils.toFXImage(FileUploadController.imgToChop, null));
+
 		startButton.setOnMouseClicked(event -> start());
+
+		Image background = new Image(HelloApplication.class.getResource("tableTop.jpeg").toString());
+
+		//allows the image to be scaled by the window size
+		BackgroundImage bgImage = new BackgroundImage(background, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(1.0, 1.0, true, true, false, false));
+
+		//sets the background of the root pane to the background image
+		main.setBackground(new Background(bgImage));
+
 	}
 
 	@FXML
 	public void start()
 	{
-		System.out.println("start");
-		main.getChildren().remove(image);
 		main.getChildren().remove(startButton);
+		main.getChildren().remove(preview);
+
 		makeGame();
+
+	}
+
+	@FXML
+	protected void backToHome(ActionEvent event) throws IOException
+	{
+		Parent home_page = FXMLLoader.load(getClass().getResource("home.fxml"));
+		Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		Scene scene = new Scene(home_page);
+		stage.setScene(scene);
+		stage.show();
 	}
 }
+

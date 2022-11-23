@@ -54,6 +54,11 @@ public class GalleryView {
         stage.show();
     }
 
+//    private void loadS3Images(String bucket, String key)
+//    {
+//        BufferedImage s3Result = Client.getImage(bucket, key);
+//        s3Images.add(s3Result);
+//    }
 
     @FXML
     public void initialize() throws IOException {

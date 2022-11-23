@@ -38,6 +38,7 @@ public class PuzzleNode extends ImageView
 
 		this.setOnMousePressed(mouseEvent ->
 		{
+
 			mouseX = mouseEvent.getX();
 			mouseY = mouseEvent.getY();
 
@@ -64,18 +65,18 @@ public class PuzzleNode extends ImageView
 			int gridX = (int) Math.round(x / width);
 			int gridY = (int) Math.round(y / height);
 
+
 			gridX = Math.min(gridContainer.getColumnCount() - 1, gridX);
 			gridX = Math.max(0, gridX);
 			gridY = Math.min(gridContainer.getRowCount() - 1, gridY);
 			gridY = Math.max(0, gridY);
+
 
 			PuzzleNode nodeToBeSwapped = controller.getNode(gridX, gridY);
 
 			if (nodeToBeSwapped != null && !nodeToBeSwapped.equals(this))
 			{
 				controller.swap(gridX, gridY, previousGridX, previousGridY);
-//				gridContainer.getChildren().remove(nodeToBeSwapped);
-//				gridContainer.add(nodeToBeSwapped, previousGridX, previousGridY);
 				int temp = GridPane.getRowIndex(this);
 				GridPane.setRowIndex(this, GridPane.getRowIndex(nodeToBeSwapped));
 				GridPane.setRowIndex(nodeToBeSwapped, temp);
