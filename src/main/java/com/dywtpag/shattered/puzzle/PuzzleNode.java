@@ -69,7 +69,10 @@ public class PuzzleNode extends ImageView
 //			System.out.println("new location: " + gridX + ", " + gridY);
 //			System.out.println("old location: " + previousGridX + ", " + previousGridY);
 
-
+			gridX = Math.min(gridContainer.getColumnCount() - 1, gridX);
+			gridX = Math.max(0, gridX);
+			gridY = Math.min(gridContainer.getRowCount() - 1, gridY);
+			gridY = Math.max(0, gridY);
 
 			PuzzleNode nodeToBeSwapped = controller.getNode(gridX, gridY);
 
@@ -88,8 +91,23 @@ public class PuzzleNode extends ImageView
 			}
 
 
+
 			gridContainer.add(this, gridX, gridY);
 		});
+	}
+
+	public Boolean checkPosition()
+	{
+		double x = this.getLayoutX();
+		double y = this.getLayoutY();
+
+		int gridX = (int) Math.round(x / width);
+		int gridY = (int) Math.round(y / height);
+
+		boolean checkX = originalX == gridX;
+		boolean checkY = originalY == gridY;
+
+		return checkX && checkY;
 	}
 
 	public void removeFromGrid()

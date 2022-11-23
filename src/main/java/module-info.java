@@ -4,7 +4,6 @@ module com.dywtpag.shattered {
 	requires java.desktop;
 	requires javafx.swing;
     requires java.net.http;
-    requires s3.client;
 
 
     opens com.dywtpag.shattered to javafx.fxml;

@@ -62,6 +62,11 @@ public class GameController
 		}
 	}
 
+	public void checkForWin()
+	{
+
+	}
+
 	private void shuffle2dArray(PuzzleNode[][] puzzle)
 	{
 		PuzzleNode[] flattenedArray = new PuzzleNode[puzzle.length * puzzle[0].length];
@@ -95,7 +100,15 @@ public class GameController
 
 	public PuzzleNode getNode(int x, int y)
 	{
-		return puzzle[x][y];
+		try
+		{
+			return puzzle[x][y];
+		}
+		catch (IndexOutOfBoundsException exception)
+		{
+			return null;
+		}
+
 	}
 
 	public void swap(int x1, int y1, int x2, int y2)
