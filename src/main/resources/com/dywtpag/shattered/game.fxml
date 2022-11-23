@@ -4,10 +4,8 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.effect.DropShadow?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
@@ -15,51 +13,8 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="main" minHeight="1080.0" minWidth="1920.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dywtpag.shattered.GameController">
-        <BorderPane minHeight="50.0" minWidth="500.0" prefHeight="60.0" prefWidth="1920.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-      <bottom>
-                <BorderPane minWidth="500.0" BorderPane.alignment="CENTER">
-                    <right>
-                        <ImageView fx:id="volume" fitHeight="50.0" fitWidth="50.0" onMouseClicked="#mute" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
-                            <image>
-                                <Image url="@volume-on.png" />
-                            </image>
-                            <cursor>
-                                <Cursor fx:constant="HAND" />
-                            </cursor>
-                            <BorderPane.margin>
-                                <Insets left="840.0" right="20.0" top="10.0" />
-                            </BorderPane.margin>
-                        </ImageView>
-                    </right>
-                    <left>
-                        <Button mnemonicParsing="false" onAction="#backToHome" style="-fx-background-color: #B3C2F2;" text="Home" textFill="WHITE" BorderPane.alignment="CENTER">
-                            <font>
-                                <Font name="Arial Rounded MT Bold" size="14.0" />
-                            </font>
-                            <cursor>
-                                <Cursor fx:constant="HAND" />
-                            </cursor>
-                            <BorderPane.margin>
-                                <Insets left="10.0" />
-                            </BorderPane.margin>
-                  <effect>
-                     <DropShadow>
-                        <color>
-                           <Color opacity="0.699999988079071" />
-                        </color>
-                     </DropShadow>
-                  </effect>
-                        </Button>
-                    </left>
-                </BorderPane>
-      </bottom>
-        </BorderPane>
-   <BorderPane fx:id="imgBorder" layoutX="440.0" layoutY="200.0" AnchorPane.leftAnchor="420.0" AnchorPane.topAnchor="200.0">
-      <center>
-         <ImageView id="preview" fx:id="preview" fitHeight="600.0" fitWidth="1079.0" pickOnBounds="true" preserveRatio="true" />
-      </center>
-   </BorderPane>
-    <GridPane fx:id="grid" gridLinesVisible="true" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="500.0" prefHeight="740.0" prefWidth="1729.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="71.0" AnchorPane.topAnchor="50.0">
+   <ImageView id="preview" fx:id="preview" fitHeight="600.0" fitWidth="1079.0" layoutX="420.0" layoutY="200.0" pickOnBounds="true" preserveRatio="true" />
+    <GridPane fx:id="grid" gridLinesVisible="true" maxHeight="-Infinity" maxWidth="-Infinity">
       <columnConstraints>
          <ColumnConstraints />
       </columnConstraints>
@@ -70,26 +25,19 @@
          <Insets />
       </opaqueInsets>
    </GridPane>
-   <BorderPane fx:id="Initial" maxHeight="1080.0" maxWidth="1920.0" prefHeight="843.0" prefWidth="1920.0">
-      <center>
-          <Button fx:id="startButton" alignment="CENTER" mnemonicParsing="false" style="-fx-background-color: #B3C2F2;" text="Start" textAlignment="CENTER" textFill="WHITE" BorderPane.alignment="CENTER">
-              <font>
-                  <Font size="37.0" />
-              </font>
-            <cursor>
-               <Cursor fx:constant="HAND" />
-            </cursor>
-            <effect>
-               <DropShadow>
-                  <color>
-                     <Color opacity="0.699999988079071" />
-                  </color>
-               </DropShadow>
-            </effect>
-            <BorderPane.margin>
-               <Insets />
-            </BorderPane.margin>
-          </Button>
-      </center>
-   </BorderPane>
+    <Button fx:id="startButton" alignment="CENTER" layoutX="897.0" layoutY="383.0" mnemonicParsing="false" style="-fx-background-color: #B3C2F2;" text="Start" textAlignment="CENTER" textFill="WHITE">
+        <font>
+            <Font size="37.0" />
+        </font>
+      <cursor>
+         <Cursor fx:constant="HAND" />
+      </cursor>
+      <effect>
+         <DropShadow>
+            <color>
+               <Color opacity="0.699999988079071" />
+            </color>
+         </DropShadow>
+      </effect>
+    </Button>
 </AnchorPane>

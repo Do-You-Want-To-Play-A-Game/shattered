@@ -31,18 +31,13 @@ public class GameController
 
 	@FXML
 	public GridPane grid;
-
 	@FXML
 	public Button startButton;
 
-	public BorderPane Initial;
 	public ImageView preview;
-	public BorderPane imgBorder;
-
 	private PuzzleNode[][] puzzle;
 
-	public TextField timeBox;
-	public ImageView volume;
+
 
 	public void makeGame()
 	{
@@ -130,29 +125,16 @@ public class GameController
 		//sets the background of the root pane to the background image
 		main.setBackground(new Background(bgImage));
 
-		//Initial image set for the background music. this carries over from the home menu
-		Image muted = new Image(HelloApplication.class.getResource("muted-volume.png").toString());
-		Image Full = new Image(HelloApplication.class.getResource("volume-on.png").toString());
-
-		if (HelloController.volumeOn)
-		{
-			volume.setImage(Full);
-		}
-		else if (!HelloController.volumeOn)
-		{
-			volume.setImage(muted);
-		}
 	}
 
 	@FXML
 	public void start()
 	{
-		main.getChildren().remove(imgBorder);
-		main.getChildren().remove(Initial);
+		main.getChildren().remove(startButton);
+		main.getChildren().remove(preview);
 
 		makeGame();
 
-//		timer.start();
 	}
 
 	@FXML
@@ -163,43 +145,6 @@ public class GameController
 		Scene scene = new Scene(home_page);
 		stage.setScene(scene);
 		stage.show();
-	}
-
-	//Puzzle timer section
-
-//	int elapsedTime = 0;
-//	int seconds = 0;
-//	int minuets = 0;
-//	int hours = 0;
-//	Timer timer = new Timer(1000, new ActionListener()
-//	{
-//		public void actionPerformed(java.awt.event.ActionEvent e)
-//		{
-//			elapsedTime += 1000;
-//			seconds = (elapsedTime / 1000) % 60;
-//			minuets = (elapsedTime / 60000) % 60;
-//			hours = (elapsedTime / 36000000);
-//
-//			timeBox.setText(hours + ":" + minuets + ":" + seconds);
-//		}
-//	});
-
-	public void mute()
-	{
-		Image muted = new Image(HelloApplication.class.getResource("muted-volume.png").toString());
-		Image Full = new Image(HelloApplication.class.getResource("volume-on.png").toString());
-
-		if (HelloController.volumeOn)
-		{
-			volume.setImage(muted);
-			HelloController.volumeOn = false;
-		}
-		else if (!HelloController.volumeOn)
-		{
-			volume.setImage(Full);
-			HelloController.volumeOn = true;
-		}
-
 	}
 }
 
