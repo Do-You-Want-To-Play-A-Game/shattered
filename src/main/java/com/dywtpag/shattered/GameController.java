@@ -152,7 +152,7 @@ public class GameController
 
 		makeGame();
 
-		timer.start();
+//		timer.start();
 	}
 
 	@FXML
@@ -167,22 +167,22 @@ public class GameController
 
 	//Puzzle timer section
 
-	int elapsedTime = 0;
-	int seconds = 0;
-	int minuets = 0;
-	int hours = 0;
-	Timer timer = new Timer(1000, new ActionListener()
-	{
-		public void actionPerformed(java.awt.event.ActionEvent e)
-		{
-			elapsedTime += 1000;
-			seconds = (elapsedTime / 1000) % 60;
-			minuets = (elapsedTime / 60000) % 60;
-			hours = (elapsedTime / 36000000);
-
-			timeBox.setText(hours + ":" + minuets + ":" + seconds);
-		}
-	});
+//	int elapsedTime = 0;
+//	int seconds = 0;
+//	int minuets = 0;
+//	int hours = 0;
+//	Timer timer = new Timer(1000, new ActionListener()
+//	{
+//		public void actionPerformed(java.awt.event.ActionEvent e)
+//		{
+//			elapsedTime += 1000;
+//			seconds = (elapsedTime / 1000) % 60;
+//			minuets = (elapsedTime / 60000) % 60;
+//			hours = (elapsedTime / 36000000);
+//
+//			timeBox.setText(hours + ":" + minuets + ":" + seconds);
+//		}
+//	});
 
 	public void mute()
 	{

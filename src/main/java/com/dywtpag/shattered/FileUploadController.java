@@ -71,6 +71,7 @@ public class FileUploadController {
 
     @FXML
     //Set back to private void after testing puzzle function
+
     public void uploadAnImage() throws IOException {
         FileChooser fileChooser = new FileChooser();
 

@@ -82,6 +82,7 @@ public class HelloController
 	protected void toUploader(ActionEvent event) throws IOException {
 
 		fadeOut();
+
 		Parent uploader = FXMLLoader.load(getClass().getResource("file-upload.fxml"));
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 
