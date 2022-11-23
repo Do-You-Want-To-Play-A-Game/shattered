@@ -26,7 +26,7 @@ public class PuzzleCreator
 				//TODO cut off excess if error
 				BufferedImage subImage = image.getSubimage(x, y, puzzleWidth, puzzleHeight);
 
-				PuzzleNode puzzleNode = new PuzzleNode(subImage, x, y);
+				PuzzleNode puzzleNode = new PuzzleNode(subImage, x / puzzleWidth, y / puzzleHeight);
 				pieces[x / puzzleWidth][y / puzzleHeight] = puzzleNode;
 			}
 		}

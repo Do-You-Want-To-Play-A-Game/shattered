@@ -44,6 +44,7 @@ public class GameController
 		int rows = 10;
 		int cols = 5;
 		puzzle = PuzzleCreator.createPuzzle(FileUploadController.imgToChop, rows, cols);
+
 		shuffle2dArray(puzzle);
 
 
@@ -60,9 +61,29 @@ public class GameController
 				puzzleNode.setController(this);
 
 				grid.add(puzzleNode, i, j);
+			}
+		}
+	}
+
+
+	public void checkForWin()
+	{
+		for (int i = 0; i < puzzle.length; i++)
+		{
+			PuzzleNode[] puzzleNodes = puzzle[i];
+			for (int j = 0; j < puzzle[0].length; j++)
+			{
+				if (puzzleNodes[j].getOriginalX() != i && puzzleNodes[j].getOriginalY() != j)
+				{
+					System.out.println(puzzleNodes[j].getOriginalX() + ", " + puzzleNodes[j].getOriginalY());
+					return;
+				}
 
 			}
 		}
+
+		main.getChildren().remove(grid);
+		main.getChildren().add(image);
 	}
 
 	private void shuffle2dArray(PuzzleNode[][] puzzle)
@@ -98,7 +119,15 @@ public class GameController
 
 	public PuzzleNode getNode(int x, int y)
 	{
-		return puzzle[x][y];
+		try
+		{
+			return puzzle[x][y];
+		}
+		catch (IndexOutOfBoundsException exception)
+		{
+			return null;
+		}
+
 	}
 
 	public void swap(int x1, int y1, int x2, int y2)
