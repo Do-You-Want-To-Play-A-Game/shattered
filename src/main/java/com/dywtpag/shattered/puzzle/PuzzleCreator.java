@@ -1,5 +1,8 @@
 package com.dywtpag.shattered.puzzle;
 
+import java.awt.*;
+import java.awt.geom.AffineTransform;
+import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -10,11 +13,14 @@ public class PuzzleCreator
 	{
 		PuzzleNode[][] pieces = new PuzzleNode[rows][columns];
 
+
 		int height = image.getHeight();
 		int width = image.getWidth();
 
-		int puzzleHeight = height / columns;
-		int puzzleWidth = width / rows;
+		int puzzleHeight = (height / columns);
+		int puzzleWidth = (width / rows);
+
+
 
 		PuzzleNode.setHeight(puzzleHeight);
 		PuzzleNode.setWidth(puzzleWidth);

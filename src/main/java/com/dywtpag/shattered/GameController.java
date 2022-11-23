@@ -6,6 +6,7 @@ import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -28,6 +29,8 @@ public class GameController
 
 	@FXML
 	public AnchorPane main;
+	@FXML
+	public AnchorPane test;
 
 	@FXML
 	public GridPane grid;
@@ -41,8 +44,9 @@ public class GameController
 
 	public void makeGame()
 	{
-		int rows = 10;
-		int cols = 5;
+		int rows = 5;
+		int cols = 3;
+
 		puzzle = PuzzleCreator.createPuzzle(FileUploadController.imgToChop, rows, cols);
 
 		shuffle2dArray(puzzle);
@@ -57,12 +61,33 @@ public class GameController
 				PuzzleNode puzzleNode = puzzleNodeRow[j];
 
 				puzzleNode.setGridContainer(grid);
-				puzzleNode.setMainContainer(main);
+				puzzleNode.setMainContainer(test);
 				puzzleNode.setController(this);
+
 
 				grid.add(puzzleNode, i, j);
 			}
 		}
+
+//		grid.prefWidth();
+//		grid.prefHeight(1080);
+//		double width = grid.getPrefWidth() / rows;
+//		double height = grid.getPrefHeight() / cols;
+
+		ColumnConstraints constraints = new ColumnConstraints();
+//		constraints.setMaxWidth(200);
+		constraints.setHgrow(Priority.NEVER);
+
+		RowConstraints rowConstraints = new RowConstraints();
+		rowConstraints.setVgrow(Priority.NEVER);
+//		rowConstraints.setPrefHeight(200);
+
+		grid.getColumnConstraints().add(constraints);
+		grid.getRowConstraints().add(rowConstraints);
+		grid.setAlignment(Pos.CENTER);
+
+
+		grid.autosize();
 	}
 
 
@@ -75,7 +100,6 @@ public class GameController
 			{
 				if (puzzleNodes[j].getOriginalX() != i && puzzleNodes[j].getOriginalY() != j)
 				{
-					System.out.println(puzzleNodes[j].getOriginalX() + ", " + puzzleNodes[j].getOriginalY());
 					return;
 				}
 
@@ -83,7 +107,7 @@ public class GameController
 		}
 
 		main.getChildren().remove(grid);
-		main.getChildren().add(image);
+//		main.getChildren().add(preview);
 	}
 
 	private void shuffle2dArray(PuzzleNode[][] puzzle)

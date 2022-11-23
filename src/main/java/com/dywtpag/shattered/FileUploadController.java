@@ -15,6 +15,8 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javax.imageio.ImageIO;
 import java.awt.*;
+import java.awt.geom.AffineTransform;
+import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -93,6 +95,15 @@ public class FileUploadController {
 
         //set imgviewr to chossen file
         choosenImg.setImage(img);
+
+//        BufferedImage scaledimg = new BufferedImage(1920,1080, BufferedImage.TYPE_INT_ARGB);
+//
+//        AffineTransform at = new AffineTransform();
+//        at.scale(0.7,0.7);
+//
+//        AffineTransformOp scale = new AffineTransformOp(at, AffineTransformOp.TYPE_BILINEAR);
+//
+//        scaledimg = scale.filter(buffedImg, scaledimg);
 
         imgToChop = buffedImg;
     }

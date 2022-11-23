@@ -6,6 +6,7 @@
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
@@ -13,18 +14,29 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="main" minHeight="1080.0" minWidth="1920.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dywtpag.shattered.GameController">
-   <ImageView id="preview" fx:id="preview" fitHeight="600.0" fitWidth="1079.0" layoutX="420.0" layoutY="200.0" pickOnBounds="true" preserveRatio="true" />
-    <GridPane fx:id="grid" gridLinesVisible="true" maxHeight="-Infinity" maxWidth="-Infinity">
-      <columnConstraints>
-         <ColumnConstraints />
-      </columnConstraints>
-      <rowConstraints>
-         <RowConstraints />
-      </rowConstraints>
-      <opaqueInsets>
-         <Insets />
-      </opaqueInsets>
-   </GridPane>
+   <ImageView id="preview" fx:id="preview" fitHeight="830.0" fitWidth="1520.0" layoutX="199.0" layoutY="77.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="173.0" AnchorPane.leftAnchor="199.0" AnchorPane.rightAnchor="201.0" AnchorPane.topAnchor="77.0" />
+   <BorderPane layoutX="13.0" layoutY="93.0" prefHeight="939.0" prefWidth="1920.0" AnchorPane.bottomAnchor="131.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+      <center>
+         <AnchorPane fx:id="test" prefHeight="939.0" prefWidth="1086.0" AnchorPane.bottomAnchor="30.0">
+            <children>
+                <GridPane fx:id="grid" gridLinesVisible="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <columnConstraints>
+                     <ColumnConstraints />
+                  </columnConstraints>
+                  <rowConstraints>
+                     <RowConstraints />
+                  </rowConstraints>
+                  <opaqueInsets>
+                     <Insets />
+                  </opaqueInsets>
+               </GridPane>
+            </children>
+            <BorderPane.margin>
+               <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+            </BorderPane.margin>
+         </AnchorPane>
+      </center>
+   </BorderPane>
     <Button fx:id="startButton" alignment="CENTER" layoutX="897.0" layoutY="383.0" mnemonicParsing="false" style="-fx-background-color: #B3C2F2;" text="Start" textAlignment="CENTER" textFill="WHITE">
         <font>
             <Font size="37.0" />
@@ -40,4 +52,29 @@
          </DropShadow>
       </effect>
     </Button>
+   <BorderPane layoutX="901.0" layoutY="1006.0" prefHeight="50.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <center>
+         <Button mnemonicParsing="false" onAction="#backToHome" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #B3C2F2;" text="home" textFill="WHITE">
+            <effect>
+               <DropShadow>
+                  <color>
+                     <Color opacity="0.699999988079071" />
+                  </color>
+               </DropShadow>
+            </effect>
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
+            <font>
+               <Font size="18.0" />
+            </font>
+            <BorderPane.margin>
+               <Insets bottom="10.0" />
+            </BorderPane.margin>
+         </Button>
+      </center>
+      <opaqueInsets>
+         <Insets />
+      </opaqueInsets>
+   </BorderPane>
 </AnchorPane>

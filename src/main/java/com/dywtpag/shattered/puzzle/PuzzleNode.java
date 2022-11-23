@@ -2,6 +2,7 @@ package com.dywtpag.shattered.puzzle;
 
 import com.dywtpag.shattered.GameController;
 import javafx.embed.swing.SwingFXUtils;
+import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -18,6 +19,9 @@ public class PuzzleNode extends ImageView
 
 	private final int originalX;
 	private final int originalY;
+
+	private final int offsety = 60;
+	private final int offsetx = 60;
 
 	private int previousGridX;
 	private int previousGridY;
@@ -39,8 +43,8 @@ public class PuzzleNode extends ImageView
 		this.setOnMousePressed(mouseEvent ->
 		{
 
-			mouseX = mouseEvent.getX();
-			mouseY = mouseEvent.getY();
+			mouseX = mouseEvent.getX() + offsetx;
+			mouseY = mouseEvent.getY() + offsety;
 
 			double x = this.getLayoutX();
 			double y = this.getLayoutY();
@@ -94,19 +98,7 @@ public class PuzzleNode extends ImageView
 		});
 	}
 
-	public Boolean checkPosition()
-	{
-		double x = this.getLayoutX();
-		double y = this.getLayoutY();
 
-		int gridX = (int) Math.round(x / width);
-		int gridY = (int) Math.round(y / height);
-
-		boolean checkX = gridX == originalX;
-		boolean checkY = gridY == originalY;
-
-		return checkX && checkY;
-	}
 
 	public void removeFromGrid()
 	{
@@ -114,12 +106,6 @@ public class PuzzleNode extends ImageView
 		{
 			return;
 		}
-
-		double x = this.getLayoutX();
-		double y = this.getLayoutY();
-
-		int gridX = (int) Math.round(x / width);
-		int gridY = (int) Math.round(y / height);
 
 		gridContainer.getChildren().remove(this);
 		mainContainer.getChildren().add(this);
