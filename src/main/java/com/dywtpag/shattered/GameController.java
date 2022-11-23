@@ -34,8 +34,8 @@ public class GameController
 
 	public void makeGame()
 	{
-		int rows = 10;
-		int cols = 5;
+		int rows = 3;
+		int cols = 3;
 		puzzle = PuzzleCreator.createPuzzle(FileUploadController.getImgToChop(), rows, cols);
 		shuffle2dArray(puzzle);
 
@@ -54,17 +54,27 @@ public class GameController
 				puzzleNode.setController(this);
 
 				grid.add(puzzleNode, i, j);
-
-//				grid.addRow(j);
-
-//				main.getChildren().add(puzzleNode);
 			}
 		}
 	}
 
 	public void checkForWin()
 	{
+		for (int i = 0; i < puzzle.length; i++)
+		{
+			PuzzleNode[] puzzleNodes = puzzle[i];
+			for (int j = 0; j < puzzle[0].length; j++)
+			{
+				if (puzzleNodes[j].getOriginalX() != i && puzzleNodes[j].getOriginalY() != j)
+				{
+					System.out.println(puzzleNodes[j].getOriginalX() + ", " + puzzleNodes[j].getOriginalY());
+					return;
+				}
+			}
+		}
 
+		main.getChildren().remove(grid);
+		main.getChildren().add(image);
 	}
 
 	private void shuffle2dArray(PuzzleNode[][] puzzle)

@@ -38,8 +38,6 @@ public class PuzzleNode extends ImageView
 
 		this.setOnMousePressed(mouseEvent ->
 		{
-//			gridContainer.getChildren().remove(0);
-
 			mouseX = mouseEvent.getX();
 			mouseY = mouseEvent.getY();
 
@@ -66,9 +64,6 @@ public class PuzzleNode extends ImageView
 			int gridX = (int) Math.round(x / width);
 			int gridY = (int) Math.round(y / height);
 
-//			System.out.println("new location: " + gridX + ", " + gridY);
-//			System.out.println("old location: " + previousGridX + ", " + previousGridY);
-
 			gridX = Math.min(gridContainer.getColumnCount() - 1, gridX);
 			gridX = Math.max(0, gridX);
 			gridY = Math.min(gridContainer.getRowCount() - 1, gridY);
@@ -93,6 +88,8 @@ public class PuzzleNode extends ImageView
 
 
 			gridContainer.add(this, gridX, gridY);
+
+			controller.checkForWin();
 		});
 	}
 
@@ -104,8 +101,8 @@ public class PuzzleNode extends ImageView
 		int gridX = (int) Math.round(x / width);
 		int gridY = (int) Math.round(y / height);
 
-		boolean checkX = originalX == gridX;
-		boolean checkY = originalY == gridY;
+		boolean checkX = gridX == originalX;
+		boolean checkY = gridY == originalY;
 
 		return checkX && checkY;
 	}
@@ -114,7 +111,6 @@ public class PuzzleNode extends ImageView
 	{
 		if (!gridContainer.getChildren().contains(this)) // if the grid doesn't contain the node then ignore this function
 		{
-			System.out.println("returned");
 			return;
 		}
 
