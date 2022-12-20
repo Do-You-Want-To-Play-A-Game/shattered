@@ -1,72 +1,180 @@
-# shattered
+## Team Name: TBD
 
-**User Stories**
 
-- As a user I want to be able to upload and/or manipulate images into an app that transforms them into a puzzle.
-- As a user I would like a pool of images to choose from.
-- As a user I would like to solve puzzles.
-- As a user I would like to increase or decreasse the difficulty. i.e the number of pieces. 
-- As a user I would like a simple interface to interact with the application. A pleasing UX / UI model.
-- As a user I would like to see a more interactive game system. Example sound bites for correct piece placement and background music.
-- As a user I would like to see an immersive layout. Pleasing CSS and appropriately styled pages.
 
-**Vision**
 
-- What is the vision of this product?
+## Group Project: Team Agreement
 
-A desktop application that provides a user the ability to make and use custom puzzles.
+### The first step in project planning is establishing a Team Agreement. This will be used as the guideline for how your team will collaborate during project week
 
-- What pain point does this project solve?
+> Projects are stressful, and can ignite emotions that otherwise wouldn’t be a problem. It’s important that the safety and security of the group comes first, and that an agreement is in place to establish expectations and accountability among the whole group.
+Planning
+Schedule a 1-hour meeting for your entire project team.
+Use this time to review the Team Agreement requirements below, and establish consensus on how to handle each requirement.
+Deliverable
+Start a public-facing GitHub markdown file, and include the following components in your team agreement submission.
+Cooperation Plan
 
-This application solves the strggle of making customizable puzzles.
+### Every person on your team is an asset. This is your chance to discover the hidden strengths and areas for growth for each team member
 
-- Why should we care about your product?
+#### What are the key strengths of each person on the team?
 
-Because this app will give users the ability to invision and create their own puzzle with its own customizable difficulty out of any image the user desires.
+- Adrian: Technical Java
+- Sage: Researching, and Documentation.
+- Armen:
+- Ian: Design, and following directions.
 
-**Scope (In/Out)**
+### How can you best utilize these strengths in the execution of your project?
 
-**IN**
+- Adrian: Programming features.
+- Sage: Finding solutions to blockers.
+- Ben: Finding new solutions. (better)
+- Ian: Making things pretty, not ruin everything.
 
-- Our app will be a desktop application
-- Our product will allow users to upload and edit image files.
-- Our product will allow users to create puzzles out of selected files.
-- Our app will allow users to save there files to be able to come back to their previously saved images.
+#### Identify team leads through all stages of the project (Subject Matter Expert)
 
-**OUT**
-- This app will not be web based. Nor will it be a mobile application.
+> Ian
 
-**Minimum Viable Product**
+### Knowing that every person in your team needs to understand all aspects of the project, how do you plan to approach the day-to-day work?
 
-**What will your MVP functionality be?**
+* **Morning Stand Up:**
+* Are there any merges outstanding
+* Git pull origin main to make sure we’re in the same place
+* Plan the timeline based on the structure of the project
+* Meet hourly in the beginning to check in as a group
+* Check if there are any merges
+* Merge branches often so we are coordinated and nothing changes too drastically.
 
-- Local image storage and retrieval. Some kind of display (probably a JavaFX file picker and display window) to show the modification of the image to the user and handle events.
+* **Lunch**
 
- **What are your stretch goals?**
+* End of day
+* Git pull origin main at the end of the working day
+* 9am - 6 pm PST working day
+* Take breaks when needed
 
-- Implementing AWS S3 as a service in spring.
-- Making a leaderboard.
-- Background music.
-- UserProfile local storage.
+### NOTE: Undoing, Redoing, Replacing, or otherwise steamrolling the project as an individual is considered to be unacceptable. Account for the inevitable divergence of ideas, execution tasks, and assignments of duties here
 
-**Functional Requirements**
+#### Conflict Plan
 
-- User can upload images
-- User can create and save images to profile.
+#### Your team should agree on a process for handling disagreements, should they arise. It is better to have a plan in place ahead of time so you can all refer back to it when necessary
 
-**Non-Functional Requirements**
+#### What will be your group’s process to resolve conflict, when it arises?
 
-- Security
-- Usability
-- Testability
+* Open communication: Honest, clear, feeling comfortable taking risks to clear the air, no grudges
+* Timeouts - Walk away when things get heated so they don’t escalate
+* Grab another member to mediate in the group
 
-## Domain Model
+#### What will your team do if one person is taking over the project and not letting the other members contribute?
 
-![midterm_data_flow](https://user-images.githubusercontent.com/108303424/202577507-61a5d78c-0861-4a71-89a1-2b4e80c8a9ee.png)
+* Respectfully draw their attention to the behavior and give them an opportunity to wrap up their thought.
+* Hand off the conversation to another person.
+* How will you approach each other and the challenges of the project knowing that it is impossible for all members to be at the exact same place in understanding and skill level?
+* Ask questions
+* Preschool mindset
+* Be cool
 
-## WireFrame
+#### How will you raise concerns to members who are not adequately contributing?
 
-![2022-11-17 (3)](https://user-images.githubusercontent.com/108303424/202584681-97593644-4535-49b3-a4b4-9b5f9bd44bea.png)
+* Open communication
+* Be direct with that person
+* If all else fails Ian will rule with an iron fist.
+
+#### How and when will you escalate the conflict if your resolution attempts are unsuccessful?
+
+* Consult Alex
+
+### Communication Plan
+
+#### Before beginning to tackle the project, determine how your group will communicate with each other. This is not an individual effort. Make sure everyone feels comfortable with the identified methods of speaking up
+
+
+#### What platforms will you use to communicate (ie. Slack, phone …)?
+
+- Slack
+
+#### How often will you take breaks?
+
+* As needed
+* At minimum, one hour
+
+#### What is your plan if you start to fall behind?
+
+* Communication
+* Utilize TA support
+* Reach out to Alex
+* Focus on the MVP - SIMPLIFY FROM THE START
+
+#### How will you communicate after hours and on the weekend?
+
+* Slack for things that can be handled by anyone in the group when we return to work, or asap
+* Text: For things that can be responded to within an hour
+* Call: For immediate emergency communication
+
+#### What is your strategy for ensuring everyone’s voice is heard?
+
+* Preschool mindset
+
+#### How will you ensure that you are creating a safe environment where everyone feels comfortable speaking up?
+
+* Genuine/natural conversation
+
+### Work Plan
+
+#### Explain your work plan to track whether everyone is contributing equally to all parts of the project, and that each person is working on “meaty” problems. This should prevent “lone wolf” efforts and “siloed” efforts
+
+#### How you will identify tasks, assign tasks, know when they are complete, and manage work in general?
+
+* Utilize Trello board 
+* Morning huddle
+* End of day huddle
+
+#### What project management tool will be used?
+
+* Slack: for team communication
+* Google Docs: for planning and file management 
+* Project Management Tool: Trello
+* Excallidraw
+* Github: for collateral materials (i.e., pics, etc.)
+
+#### Presentation Deck
+
+Make a single copy of the Presentation Deck Template. Share your copy will all team members, so everyone is working from the same file.
+Link to the shared doc in your project plan.
+
+
+### Schedule your practice session - 
+
+#### Work with your instructor to pre-schedule an date and time for your “practice run” of your presentation. This should either be an exact time, or a short window of time designated by your instructor. Plan for a 30-45 minute meeting during the class session before your actual presentation to allow time for both your practice run and feedback from the instructional team
+
+### Git Process
+
+#### Plan out what your team’s Git workflow looks like for coding tasks
+
+#### What components of your project will live on GitHub?
+
+* Organization/Repositories/assets
+
+#### How will you share the repository with your teammates?
+
+* Merge early and often and on schedule
+* Anytime we have a working piece of the project, we should seek to merge.
+
+#### What is your Git flow?
+
+* Branch on individual branch
+* Git Pull Origin Main to sync baches
+* Merge and Pull request when we have working code
+* Git pull origin main to sync branches
+
+#### Will you be using a PR review workflow? If so, consider
+
+* How many people must review a PR? 2
+* Who merges PRs? Subject matter expert & person who wrote the code (alt. PM)
+* How often will you merge? Anytime we have working code for a piece of the project
+* How will you communicate that it’s time to merge? - Video chat in Remo.
+
+
+
 
 
 
